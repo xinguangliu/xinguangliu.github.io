@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/404.html</loc>
+    
+    <lastmod>2017-01-14T07:21:28.307Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/12/21/%E8%BF%91%E8%BA%AB%E5%85%B5%E7%8E%8B2/</loc>
     
     <lastmod>2017-01-14T07:04:04.835Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://yoursite.com/2016/12/20/2016-SHA-R-Notes/</loc>
     
     <lastmod>2017-01-14T07:02:47.123Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/404.html</loc>
-    
-    <lastmod>2017-01-14T07:02:07.548Z</lastmod>
     
   </url>
   
