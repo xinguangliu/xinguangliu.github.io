@@ -1,0 +1,1007 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.useso.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="R 包,stringr," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LXG" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="写在前面的话前段时间比较辛苦，连着几周下来，终于该来的都来了，发烧、头疼加嗜睡，一样都不少，一天下来清醒的时候也不多，更新了个代码，还有点时间突然好想看个小说。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不务正业：R语言读小说《近身兵王》">
+<meta property="og:url" content="http://yoursite.com/2016/12/21/近身兵王2/index.html">
+<meta property="og:site_name" content="LXG">
+<meta property="og:description" content="写在前面的话前段时间比较辛苦，连着几周下来，终于该来的都来了，发烧、头疼加嗜睡，一样都不少，一天下来清醒的时候也不多，更新了个代码，还有点时间突然好想看个小说。">
+<meta property="og:image" content="http://yoursite.com/近身兵王2_files/figure-html/3.jpg">
+<meta property="og:image" content="http://yoursite.com/近身兵王2_files/figure-html/unnamed-chunk-7-1.png">
+<meta property="og:updated_time" content="2017-01-13T13:49:00.388Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不务正业：R语言读小说《近身兵王》">
+<meta name="twitter:description" content="写在前面的话前段时间比较辛苦，连着几周下来，终于该来的都来了，发烧、头疼加嗜睡，一样都不少，一天下来清醒的时候也不多，更新了个代码，还有点时间突然好想看个小说。">
+<meta name="twitter:image" content="http://yoursite.com/近身兵王2_files/figure-html/3.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/21/近身兵王2/"/>
+
+
+
+
+
+  <title> 不务正业：R语言读小说《近身兵王》 | LXG </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?fb398dacad0ffb2a3daa9305b7a7eb08";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">LXG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Above and Beyond.</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+	  
+	  
+	 
+	  
+	  
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/21/近身兵王2/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xinguang Liu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/lxg3.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="LXG">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="LXG" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                不务正业：R语言读小说《近身兵王》
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-21T00:00:00+08:00">
+                2016-12-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-01-13T21:49:00+08:00">
+                2017-01-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/string/" itemprop="url" rel="index">
+                    <span itemprop="name">string</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/string/R/" itemprop="url" rel="index">
+                    <span itemprop="name">R</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/21/近身兵王2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/21/近身兵王2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/21/近身兵王2/" class="leancloud_visitors" data-flag-title="不务正业：R语言读小说《近身兵王》">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h1><p>前段时间比较辛苦，连着几周下来，终于该来的都来了，发烧、头疼加嗜睡，一样都不少，一天下来清醒的时候也不多，更新了个代码，还有点时间突然好想看个小说。<a id="more"></a>手机上随便打开一个，半小时一下就没了，贼啊，这书好看，网上搜索发现是《近身兵王》（秦渊），好评如潮，决定看完，但目录显示这是个连载，已经一千多章，这得猴年马月才能看完呢，我可只有这感冒的几天空挡…看来只能快速选着看了，但怎么来定位自己想要的章节呢，记起之前R会议上一个美女<a href="http://www.cnblogs.com/weibaar/p/4925399.html" target="_blank" rel="external">尾巴AR</a>介绍了用R读小说，这次也来试试看.</p>
+<h1 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h1><h2 id="小说网上下载"><a href="#小说网上下载" class="headerlink" title="小说网上下载"></a>小说网上下载</h2><p><img src="/近身兵王2_files/figure-html/3.jpg" alt=""></p>
+<p><a href="http://www.xiashu.cc/1222/down" target="_blank" rel="external">近身兵王.txt</a></p>
+<p>下载放于项目目录下。</p>
+<h2 id="语言环境设置"><a href="#语言环境设置" class="headerlink" title="语言环境设置"></a>语言环境设置</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 中文环境</span></div><div class="line">Sys.setlocale(<span class="string">"LC_CTYPE"</span>, <span class="string">"Chinese"</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; [1] &quot;Chinese (Simplified)_People&apos;s Republic of China.936&quot;</div></pre></td></tr></table></figure>
+<h2 id="小说读入"><a href="#小说读入" class="headerlink" title="小说读入"></a>小说读入</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(readr)</div><div class="line"><span class="keyword">library</span>(stringr)</div><div class="line"><span class="keyword">library</span>(dplyr, quietly = <span class="literal">TRUE</span>, warn.conflicts = <span class="literal">FALSE</span>)</div><div class="line"></div><div class="line">JSBW &lt;- read_lines(<span class="string">"近身兵王.txt"</span>)</div><div class="line">head(JSBW, n = <span class="number">10</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#&gt;  [1] &quot;&lt;----------------------------------------------------------------&gt;&quot;</div><div class="line">#&gt;  [2] &quot;  温馨提示：您所阅读的小说来自【久久小说网】 www.99txt.cc&quot;         </div><div class="line">#&gt;  [3] &quot; 本网站没有弹窗可放心阅读&quot;                                         </div><div class="line">#&gt;  [4] &quot;&lt;----------------------------------------------------------------&gt;&quot;</div><div class="line">#&gt;  [5] &quot;&quot;                                                                  </div><div class="line">#&gt;  [6] &quot;  《近身兵王》&quot;                                                    </div><div class="line">#&gt;  [7] &quot;  连载阅读地址：http://www.99txt.cc/7902/&quot;                         </div><div class="line">#&gt;  [8] &quot;&quot;                                                                  </div><div class="line">#&gt;  [9] &quot;&quot;                                                                  </div><div class="line">#&gt; [10] &quot; 第1章 来世再做兄弟！&quot;</div></pre></td></tr></table></figure>
+<h2 id="小说章节目录"><a href="#小说章节目录" class="headerlink" title="小说章节目录"></a>小说章节目录</h2><p>查看章节目录，并按目录分割为小文件。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Content &lt;- str_subset(JSBW, <span class="string">"第\\d*章"</span>) %&gt;% str_trim(side = <span class="string">"both"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 总章节数</span></div><div class="line">ContentNum &lt;- length(Content)</div><div class="line">ContentNum</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; [1] 1612</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 前10章目录</span></div><div class="line">head(Content, n = <span class="number">10</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#&gt;  [1] &quot;第1章 来世再做兄弟！&quot;         &quot;第2章 色狼，你的手对哪摸呢？&quot;</div><div class="line">#&gt;  [3] &quot;第3章 英雄救美&quot;               &quot;第4章 一个打七个&quot;            </div><div class="line">#&gt;  [5] &quot;第5章 鲁雪晴的决定&quot;           &quot;第6章 你想包养老娘？&quot;        </div><div class="line">#&gt;  [7] &quot;第7章 痛打恶少&quot;               &quot;第8章 跟我回家&quot;              </div><div class="line">#&gt;  [9] &quot;第9章 撩人的小姨&quot;             &quot;第10章 裸睡的悲剧&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">write_lines(Content, <span class="string">"Content.txt"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 按章节分割 目录保存本地</span></div><div class="line"><span class="keyword">if</span> (!dir.exists(<span class="string">"章节目录"</span>)) &#123;</div><div class="line">    dir.create(<span class="string">"章节目录"</span>)</div><div class="line">&#125;</div><div class="line">ContentLocation &lt;- which(str_detect(JSBW, <span class="string">"第\\d*章"</span>))</div><div class="line">temp &lt;- c(ContentLocation, length(JSBW))</div><div class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> seq_len(ContentNum)) &#123;</div><div class="line">    data &lt;- JSBW[temp[i]:(temp[i + <span class="number">1</span>] - <span class="number">1</span>)]</div><div class="line">    write_lines(data, paste0(<span class="string">"章节目录/"</span>, str_pad(i, width = <span class="number">4</span>, side = <span class="string">"left"</span>, </div><div class="line">        pad = <span class="string">"0"</span>), <span class="string">"-"</span>, Content[i], <span class="string">".txt"</span>))</div><div class="line">&#125;</div><div class="line">head(list.files(<span class="string">"章节目录"</span>), n = <span class="number">10</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#&gt;  [1] &quot;0001-第1章 来世再做兄弟！.txt&quot;        </div><div class="line">#&gt;  [2] &quot;0002-第2章 色狼，你的手对哪摸呢？.txt&quot;</div><div class="line">#&gt;  [3] &quot;0003-第3章 英雄救美.txt&quot;              </div><div class="line">#&gt;  [4] &quot;0004-第4章 一个打七个.txt&quot;            </div><div class="line">#&gt;  [5] &quot;0005-第5章 鲁雪晴的决定.txt&quot;          </div><div class="line">#&gt;  [6] &quot;0006-第6章 你想包养老娘？.txt&quot;        </div><div class="line">#&gt;  [7] &quot;0007-第7章 痛打恶少.txt&quot;              </div><div class="line">#&gt;  [8] &quot;0008-第8章 跟我回家.txt&quot;              </div><div class="line">#&gt;  [9] &quot;0009-第9章 撩人的小姨.txt&quot;            </div><div class="line">#&gt; [10] &quot;0010-第10章 裸睡的悲剧.txt&quot;</div></pre></td></tr></table></figure>
+<h2 id="人物段落"><a href="#人物段落" class="headerlink" title="人物段落"></a>人物段落</h2><p>查看某个人物出现的所有段落，以冷艳美女“易红月”为例：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Yhy &lt;- str_subset(JSBW, <span class="string">"易红月"</span>)</div><div class="line">head(Yhy)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#&gt; [1] &quot;    少女恍然，她能够分辨得出秦渊的茫然是否在做作，旋即轻声说道：“我叫易红月。”&quot;          </div><div class="line">#&gt; [2] &quot;    “易红月，很好听的名字。”秦渊毫不吝惜自己的赞美说道。&quot;                                </div><div class="line">#&gt; [3] &quot;    “谢谢！”易红月的声音优雅平静，说完再次转身面对着初升的朝阳。&quot;                        </div><div class="line">#&gt; [4] &quot;    秦渊发现，此刻的他居然不会说话了，就这么默默地站在易红月的背后，欣赏着这难得的画面。&quot;</div><div class="line">#&gt; [5] &quot;    秦渊不说话，易红月也不说话。&quot;                                                        </div><div class="line">#&gt; [6] &quot;    良久，易红月突然出声，又相似自言自语，“你喜欢看日出么？”&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 目录保存本地</span></div><div class="line"><span class="keyword">if</span> (!dir.exists(<span class="string">"人物章节"</span>)) &#123;</div><div class="line">    dir.create(<span class="string">"人物章节"</span>)</div><div class="line">&#125;</div><div class="line">write_lines(Yhy, <span class="string">"人物章节/易红月.txt"</span>)</div></pre></td></tr></table></figure>
+<h2 id="人物互动"><a href="#人物互动" class="headerlink" title="人物互动"></a>人物互动</h2><p>同一个段落里面同时出现两个人的姓名， 以“易红月”和“秦渊”为例，</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Yhy.Qy &lt;- str_subset(JSBW, <span class="string">"(易红月.*秦渊)|(秦渊.*易红月)"</span>)</div><div class="line">head(Yhy.Qy)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#&gt; [1] &quot;    少女恍然，她能够分辨得出秦渊的茫然是否在做作，旋即轻声说道：“我叫易红月。”&quot;          </div><div class="line">#&gt; [2] &quot;    “易红月，很好听的名字。”秦渊毫不吝惜自己的赞美说道。&quot;                                </div><div class="line">#&gt; [3] &quot;    秦渊发现，此刻的他居然不会说话了，就这么默默地站在易红月的背后，欣赏着这难得的画面。&quot;</div><div class="line">#&gt; [4] &quot;    秦渊不说话，易红月也不说话。&quot;                                                        </div><div class="line">#&gt; [5] &quot;    秦渊回神，旋即将目光从易红月身上转移，看向那万丈金光的太阳。&quot;                        </div><div class="line">#&gt; [6] &quot;    “为什么？”易红月再次转过身，看着秦渊时，眼神微微有些愕然。&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 目录保存本地</span></div><div class="line"><span class="keyword">if</span> (!dir.exists(<span class="string">"人物互动"</span>)) &#123;</div><div class="line">    dir.create(<span class="string">"人物互动"</span>)</div><div class="line">&#125;</div><div class="line">write_lines(Yhy.Qy, <span class="string">"人物互动/易红月-秦渊.txt"</span>)</div></pre></td></tr></table></figure>
+<h2 id="人物出场场次"><a href="#人物出场场次" class="headerlink" title="人物出场场次"></a>人物出场场次</h2><p>人物众多，我只关心美女呵呵</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">meiNv &lt;- c(<span class="string">"苏倾月|曼陀罗"</span>, <span class="string">"叶云曼|小姨"</span>, <span class="string">"雪晴"</span>, <span class="string">"可卿"</span>, <span class="string">"李欣"</span>, <span class="string">"易红月"</span>, </div><div class="line">    <span class="string">"安倚桥"</span>, <span class="string">"纳兰明珠|茗珠"</span>, <span class="string">"左瑶"</span>, <span class="string">"左璃"</span>, <span class="string">"柳梦心"</span>, <span class="string">"何伊人"</span>, <span class="string">"洛樱"</span>)</div><div class="line"></div><div class="line">zhangJie.list &lt;- list.files(<span class="string">"章节目录"</span>)</div><div class="line">zhangJie.path &lt;- paste0(<span class="string">"章节目录/"</span>, zhangJie.list)</div><div class="line">zhangJie.all &lt;- lapply(zhangJie.path, read_lines)</div><div class="line"><span class="comment"># str(zhangJie.all)</span></div><div class="line"></div><div class="line"><span class="keyword">library</span>(tibble)</div><div class="line">zhangJie.sum &lt;- list(章节 = zhangJie.list)</div><div class="line"></div><div class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> seq_along(meiNv)) &#123;</div><div class="line">    zhangJie.sum[[i + <span class="number">1</span>]] &lt;- sapply(zhangJie.all, <span class="keyword">function</span>(str) &#123;</div><div class="line">        sum(str_count(str, meiNv[i]))</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line">names(zhangJie.sum)[-<span class="number">1</span>] &lt;- meiNv</div><div class="line"><span class="comment"># str(zhangJie.sum)</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">library</span>(DT)</div><div class="line"><span class="comment"># 生成人物-场次图，筛选排序找出关键章节</span></div><div class="line">datatable(as.data.frame(zhangJie.sum), options = list(paging = <span class="literal">TRUE</span>, pageLength = <span class="number">5</span>, </div><div class="line">    searching = <span class="literal">TRUE</span>), rownames = <span class="literal">FALSE</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 本地保存</span></div><div class="line">write.csv(as.data.frame(zhangJie.sum), <span class="string">"meiNv.csv"</span>, fileEncoding = <span class="string">"GB2312"</span>, </div><div class="line">    row.names = <span class="literal">FALSE</span>)</div></pre></td></tr></table></figure>
+<h2 id="人物关系网"><a href="#人物关系网" class="headerlink" title="人物关系网"></a>人物关系网</h2><p>看看男猪脚与美女之间的互动关系强弱：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># # 读入所有的人物列表 nameAll &lt;- read_lines('人物姓名.txt') %&gt;%</span></div><div class="line"><span class="comment"># str_replace('\\d*', '') %&gt;% str_trim(side = 'left') %&gt;% str_c('（') %&gt;%</span></div><div class="line"><span class="comment"># str_match('.*?（') %&gt;% str_split('（') %&gt;% sapply(function(str) &#123; name &lt;-</span></div><div class="line"><span class="comment"># c(name, str[[1]]) &#125;) # 所有人物 nameAll</span></div><div class="line"></div><div class="line"><span class="comment"># 看看秦渊与各个美女之间的关系图</span></div><div class="line">nameAll &lt;- c(meiNv, <span class="string">"秦渊|凶兽"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 互动关系</span></div><div class="line">num &lt;- length(nameAll)</div><div class="line">relation &lt;- matrix(data = rep(<span class="number">0</span>, num^<span class="number">2</span>), nrow = num)</div><div class="line">colnames(relation) &lt;- nameAll</div><div class="line">rownames(relation) &lt;- nameAll</div><div class="line"></div><div class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1</span>:(num - <span class="number">1</span>)) &#123;</div><div class="line">    <span class="keyword">for</span> (j <span class="keyword">in</span> (i + <span class="number">1</span>):num) &#123;</div><div class="line">        relation[i, j] &lt;- sum(str_detect(JSBW, paste0(<span class="string">"(("</span>, nameAll[[i]], <span class="string">").*("</span>, </div><div class="line">            nameAll[[j]], <span class="string">"))|(("</span>, nameAll[[j]], <span class="string">").*("</span>, nameAll[[i]], <span class="string">"))"</span>)))</div><div class="line">        relation[j, i] &lt;- relation[i, j]</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">library</span>(igraph, quietly = <span class="literal">TRUE</span>, warn.conflicts = <span class="literal">FALSE</span>)</div><div class="line"><span class="keyword">library</span>(ggthemes)</div><div class="line">g &lt;- graph_from_adjacency_matrix(relation, mode = <span class="string">"upper"</span>, diag = <span class="literal">FALSE</span>, weighted = <span class="literal">TRUE</span>)</div><div class="line">E(g)$width &lt;- E(g)$weight/<span class="number">500</span></div><div class="line">E(g)$color &lt;- tableau_seq_gradient_pal(<span class="string">"Red"</span>)(E(g)$weight/max(relation))</div><div class="line"><span class="comment"># E(g)$curved &lt;- 0.2</span></div><div class="line">temp &lt;- rowSums(relation)</div><div class="line">node.weight &lt;- temp/max(temp)</div><div class="line">V(g)$size &lt;- node.weight * <span class="number">20</span></div><div class="line">V(g)$label.dist &lt;- <span class="number">0.5</span></div><div class="line">V(g)$label.cex &lt;- <span class="number">0.7</span></div><div class="line"><span class="comment"># V(g)$color &lt;- tableau_seq_gradient_pal('Red')(node.weight)</span></div><div class="line">plot(g, layout = layout.circle, vertex.shape = <span class="string">"none"</span>)</div></pre></td></tr></table></figure>
+<p><img src="/近身兵王2_files/figure-html/unnamed-chunk-7-1.png" alt=""></p>
+<!-- -->
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># library(visNetwork) visIgraph(g) %&gt;% visIgraphLayout(layout =</span></div><div class="line"><span class="comment"># 'layout_in_circle' , smooth = FALSE, physics = FALSE) %&gt;%</span></div><div class="line"><span class="comment"># visOptions(highlightNearest = list(enabled = T, hover = T)) %&gt;%</span></div><div class="line"><span class="comment"># visInteraction(dragNodes = FALSE, dragView = FALSE, zoomView = TRUE) %&gt;%</span></div><div class="line"><span class="comment"># visNodes(borderWidthSelected = 10, labelHighlightBold = TRUE, font = '28px</span></div><div class="line"><span class="comment"># arial #458B00')</span></div></pre></td></tr></table></figure>
+<h1 id="写在后面的话"><a href="#写在后面的话" class="headerlink" title="写在后面的话"></a>写在后面的话</h1><p>捣鼓了半天时间，大概了解的人物角色、场次与互动关系，选看了感兴趣章节，前面部分很不错，后面的剧情超出了所能理解的层次，果断终止，半天时间，到此结束。</p>
+<p>明天生龙活虎！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/R-包/" rel="tag"># R 包</a>
+          
+            <a href="/tags/stringr/" rel="tag"># stringr</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/20/2016-SHA-R-Notes/" rel="next" title="会议资料｜第九届中国R语言会议（上海）会议纪要">
+                <i class="fa fa-chevron-left"></i> 会议资料｜第九届中国R语言会议（上海）会议纪要
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/25/每逢佳节倍思亲/" rel="prev" title="每逢佳节倍思亲">
+                每逢佳节倍思亲 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/21/近身兵王2/"
+           data-title="不务正业：R语言读小说《近身兵王》" data-url="http://yoursite.com/2016/12/21/近身兵王2/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/lxg3.png"
+               alt="Xinguang Liu" />
+          <p class="site-author-name" itemprop="name">Xinguang Liu</p>
+          <p class="site-description motion-element" itemprop="description">Good good study, day day up.</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xinguangliu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://cn.linkedin.com/in/xinguangliu" target="_blank" title="Linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin-square"></i>
+                  
+                  Linkedin
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面的话"><span class="nav-number">1.</span> <span class="nav-text">写在前面的话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据导入"><span class="nav-number">2.</span> <span class="nav-text">数据导入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#小说网上下载"><span class="nav-number">2.1.</span> <span class="nav-text">小说网上下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语言环境设置"><span class="nav-number">2.2.</span> <span class="nav-text">语言环境设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小说读入"><span class="nav-number">2.3.</span> <span class="nav-text">小说读入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小说章节目录"><span class="nav-number">2.4.</span> <span class="nav-text">小说章节目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人物段落"><span class="nav-number">2.5.</span> <span class="nav-text">人物段落</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人物互动"><span class="nav-number">2.6.</span> <span class="nav-text">人物互动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人物出场场次"><span class="nav-number">2.7.</span> <span class="nav-text">人物出场场次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#人物关系网"><span class="nav-number">2.8.</span> <span class="nav-text">人物关系网</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写在后面的话"><span class="nav-number">3.</span> <span class="nav-text">写在后面的话</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xinguang Liu</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xinguangliu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("zjb9Gn8ccW4Hp1LJueCgonMO-gzGzoHsz", "k213aq7u1IOPDgr5Xof6efti");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

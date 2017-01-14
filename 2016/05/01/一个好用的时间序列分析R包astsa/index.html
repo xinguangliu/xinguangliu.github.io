@@ -1,0 +1,1034 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.useso.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="R 包,astsa," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="LXG" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="astsa R包简介时间序列分析在数据的趋势性分析、模式识别、信号提取和回归预报等方面应用非常广泛（如果你还没有尝试过此方面的分析，那就开始研究下周边的房价走势吧:)），得益于R的开源环境，已有大量的相关R包可供使用，详见CRAN Task View: Time Series Analysis.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个好用的时间序列分析R包astsa">
+<meta property="og:url" content="http://yoursite.com/2016/05/01/一个好用的时间序列分析R包astsa/index.html">
+<meta property="og:site_name" content="LXG">
+<meta property="og:description" content="astsa R包简介时间序列分析在数据的趋势性分析、模式识别、信号提取和回归预报等方面应用非常广泛（如果你还没有尝试过此方面的分析，那就开始研究下周边的房价走势吧:)），得益于R的开源环境，已有大量的相关R包可供使用，详见CRAN Task View: Time Series Analysis.">
+<meta property="og:image" content="http://yoursite.com/figure/一个好用的时间序列分析R包astsa/unnamed-chunk-5-1.png">
+<meta property="og:image" content="http://yoursite.com/figure/一个好用的时间序列分析R包astsa/unnamed-chunk-5-2.png">
+<meta property="og:image" content="http://yoursite.com/figure/一个好用的时间序列分析R包astsa/unnamed-chunk-5-3.png">
+<meta property="og:image" content="http://yoursite.com/figure/一个好用的时间序列分析R包astsa//unnamed-chunk-6-1.png">
+<meta property="og:image" content="http://yoursite.com/figure/一个好用的时间序列分析R包astsa//unnamed-chunk-7-1.png">
+<meta property="og:image" content="http://yoursite.com/figure/一个好用的时间序列分析R包astsa//unnamed-chunk-8-1.png">
+<meta property="og:image" content="http://yoursite.com/figure/一个好用的时间序列分析R包astsa//unnamed-chunk-9-1.png">
+<meta property="og:image" content="http://yoursite.com/figure/一个好用的时间序列分析R包astsa/unnamed-chunk-10-1.png">
+<meta property="og:image" content="http://yoursite.com/figure/一个好用的时间序列分析R包astsa/unnamed-chunk-11-1.png">
+<meta property="og:image" content="http://yoursite.com/figure/一个好用的时间序列分析R包astsa/unnamed-chunk-11-2.png">
+<meta property="og:image" content="http://yoursite.com/figure/一个好用的时间序列分析R包astsa/filterfun.png">
+<meta property="og:image" content="http://yoursite.com/figure/一个好用的时间序列分析R包astsa/filteredseries.png">
+<meta property="og:image" content="http://yoursite.com/figure/一个好用的时间序列分析R包astsa/after filter.png">
+<meta property="og:updated_time" content="2017-01-13T10:17:08.467Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个好用的时间序列分析R包astsa">
+<meta name="twitter:description" content="astsa R包简介时间序列分析在数据的趋势性分析、模式识别、信号提取和回归预报等方面应用非常广泛（如果你还没有尝试过此方面的分析，那就开始研究下周边的房价走势吧:)），得益于R的开源环境，已有大量的相关R包可供使用，详见CRAN Task View: Time Series Analysis.">
+<meta name="twitter:image" content="http://yoursite.com/figure/一个好用的时间序列分析R包astsa/unnamed-chunk-5-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/05/01/一个好用的时间序列分析R包astsa/"/>
+
+
+
+
+
+  <title> 一个好用的时间序列分析R包astsa | LXG </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?fb398dacad0ffb2a3daa9305b7a7eb08";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">LXG</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Above and Beyond.</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+	  
+	  
+	 
+	  
+	  
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/05/01/一个好用的时间序列分析R包astsa/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Xinguang Liu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/lxg3.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="LXG">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="LXG" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                一个好用的时间序列分析R包astsa
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-01T00:00:00+08:00">
+                2016-05-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2017-01-13T18:17:08+08:00">
+                2017-01-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/time-series/" itemprop="url" rel="index">
+                    <span itemprop="name">time-series</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/time-series/R/" itemprop="url" rel="index">
+                    <span itemprop="name">R</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/05/01/一个好用的时间序列分析R包astsa/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/01/一个好用的时间序列分析R包astsa/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/01/一个好用的时间序列分析R包astsa/" class="leancloud_visitors" data-flag-title="一个好用的时间序列分析R包astsa">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="astsa-R包简介"><a href="#astsa-R包简介" class="headerlink" title="astsa R包简介"></a><code>astsa</code> R包简介</h3><p><a href="https://en.wikipedia.org/wiki/Time_series" target="_blank" rel="external">时间序列分析</a>在数据的趋势性分析、模式识别、信号提取和回归预报等方面应用非常广泛（如果你还没有尝试过此方面的分析，那就开始研究下周边的房价走势吧:)），得益于R的开源环境，已有大量的相关R包可供使用，详见<a href="https://cran.r-project.org/web/views/TimeSeries.html" target="_blank" rel="external">CRAN Task View: Time Series Analysis</a>.</p>
+<a id="more"></a>
+<p>今天推荐的R包<a href="https://cran.r-project.org/web/packages/astsa/index.html" target="_blank" rel="external">astsa</a>可以从CRAN下载安装，但可惜的是<a href="https://cran.r-project.org/web/views/TimeSeries.html" target="_blank" rel="external">CRAN Task View: Time Series Analysis</a>中对<code>astsa</code>包却只有寥寥几个字的介绍，难道是没发现它的好？本文档中介绍其几个非常棒的函数，具体信息参见该包的<a href="http://www.stat.pitt.edu/stoffer/tsa3" target="_blank" rel="external">astsa home page</a>上有详细的文档说明，还配套一个教材<strong>Time Series Analysis and Its Applications: With R Examples</strong>，书中的<a href="http://www.stat.pitt.edu/stoffer/tsa3/Rexamples.htm" target="_blank" rel="external">code</a>也已公开，非常方便于日常学习和实例操作，这儿必须有32个赞！</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 包安装</span></div><div class="line">install.packages(<span class="string">"astsa"</span>)</div></pre></td></tr></table></figure>
+<h3 id="astsa-应用示例"><a href="#astsa-应用示例" class="headerlink" title="astsa 应用示例"></a><code>astsa</code> 应用示例</h3><h4 id="数据源说明"><a href="#数据源说明" class="headerlink" title="数据源说明"></a>数据源说明</h4><ul>
+<li>真实工作中的数据通常来自于数据库实时读取，网络爬虫或本地数据的上传。该示例中采用一本地离线数据做演示，数据格式为*.csv文本；</li>
+<li>CSV文本数据的读取函数可以用<code>read.csv()</code>, <code>read_csv()</code>, or <code>fread()</code>等函数，本实例中采用<code>read_csv()</code>做演示。</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(readr)</div><div class="line"></div><div class="line">df.raw &lt;- read_csv(<span class="string">"demoData.csv"</span>, col_types = list(</div><div class="line">  <span class="string">"time"</span> = col_datetime(format = <span class="string">"%Y/%m/%d %H:%M:%S"</span>)))</div><div class="line">str(df.raw)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">## Classes &apos;tbl_df&apos;, &apos;tbl&apos; and &apos;data.frame&apos;:	1408 obs. of  6 variables:</div><div class="line">##  $ time : POSIXct, format: &quot;2014-04-10 08:30:06&quot; &quot;2014-04-10 08:30:54&quot; ...</div><div class="line">##  $ data1: num  1.43 1.31 1.47 1.24 1.25 ...</div><div class="line">##  $ data2: num  0.34 0.278 0.209 0.132 0.281 0.324 0.308 0.412 0.236 0.234 ...</div><div class="line">##  $ data3: num  0.298 0.329 0.278 0.335 0.188 0.461 0.278 0.283 0.281 0.281 ...</div><div class="line">##  $ data4: num  1.37 1.13 1.39 1.18 1.22 ...</div><div class="line">##  $ data5: num  0.091 0.37 0.121 0.1 0.055 0.676 0.116 0.387 0.233 0.195 ...</div><div class="line">##  - attr(*, &quot;spec&quot;)=List of 2</div><div class="line">##   ..$ cols   :List of 6</div><div class="line">##   .. ..$ time :List of 1</div><div class="line">##   .. .. ..$ format: chr &quot;%Y/%m/%d %H:%M:%S&quot;</div><div class="line">##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_datetime&quot; &quot;collector&quot;</div><div class="line">##   .. ..$ data1: list()</div><div class="line">##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</div><div class="line">##   .. ..$ data2: list()</div><div class="line">##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</div><div class="line">##   .. ..$ data3: list()</div><div class="line">##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</div><div class="line">##   .. ..$ data4: list()</div><div class="line">##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</div><div class="line">##   .. ..$ data5: list()</div><div class="line">##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;</div><div class="line">##   ..$ default: list()</div><div class="line">##   .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_guess&quot; &quot;collector&quot;</div><div class="line">##   ..- attr(*, &quot;class&quot;)= chr &quot;col_spec&quot;</div></pre></td></tr></table></figure>
+<h4 id="数据表整合"><a href="#数据表整合" class="headerlink" title="数据表整合"></a>数据表整合</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(tidyr)</div><div class="line">df.tidy &lt;- gather(df.raw, key=items, value=run_data, data1:data5)</div><div class="line">str(df.tidy)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">## Classes &apos;tbl_df&apos;, &apos;tbl&apos; and &apos;data.frame&apos;:	7040 obs. of  3 variables:</div><div class="line">##  $ time    : POSIXct, format: &quot;2014-04-10 08:30:06&quot; &quot;2014-04-10 08:30:54&quot; ...</div><div class="line">##  $ items   : chr  &quot;data1&quot; &quot;data1&quot; &quot;data1&quot; &quot;data1&quot; ...</div><div class="line">##  $ run_data: num  1.43 1.31 1.47 1.24 1.25 ...</div></pre></td></tr></table></figure>
+<h4 id="原始数据图示"><a href="#原始数据图示" class="headerlink" title="原始数据图示"></a>原始数据图示</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(tseries)</div><div class="line"></div><div class="line"><span class="comment">### 不规则的时间序列数据</span></div><div class="line">ts.raw &lt;- irts(df.raw$time, as.matrix(df.raw[, -<span class="number">1</span>]))</div><div class="line">plot(ts.raw, main=<span class="string">"Raw Data"</span>)</div></pre></td></tr></table></figure>
+<p><img src="/figure/一个好用的时间序列分析R包astsa/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;"></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 美图必用</span></div><div class="line"><span class="keyword">library</span>(ggplot2)</div><div class="line">plot.raw.1 &lt;- ggplot(df.tidy, aes(x=time, y=run_data, col=items)) + geom_point()</div><div class="line">plot.raw.1</div></pre></td></tr></table></figure>
+<p><img src="/figure/一个好用的时间序列分析R包astsa/unnamed-chunk-5-2.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;"></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">plot.raw.2 &lt;- ggplot(df.tidy, aes(x=run_data, fill=items)) + geom_density(alpha=<span class="number">.7</span>)</div><div class="line">plot.raw.2</div></pre></td></tr></table></figure>
+<p><img src="/figure/一个好用的时间序列分析R包astsa/unnamed-chunk-5-3.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;"></p>
+<h4 id="趋势拟合"><a href="#趋势拟合" class="headerlink" title="趋势拟合"></a>趋势拟合</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">ts.1 &lt;- irts(df.raw$time, as.matrix(df.raw[, <span class="number">2</span>]))</div><div class="line">time.1 &lt;- time(ts.1)</div><div class="line">value.1 &lt;- value(ts.1)</div><div class="line">plot(ts.1, type=<span class="string">"p"</span>, main=<span class="string">"Demo with 1st var"</span>)</div><div class="line">lines(ksmooth(time.1, value.1, <span class="string">"normal"</span>, bandwidth=<span class="number">5000</span>), col=<span class="string">"red"</span>, lwd=<span class="number">2</span>)  </div><div class="line">lines(supsmu(time.1, value.1, span=<span class="number">.5</span>), col=<span class="string">"blue"</span>, lwd=<span class="number">2</span>)  </div><div class="line">lines(lowess(value.1 ~ time.1, f=<span class="number">2</span>/<span class="number">3</span>), col=<span class="string">"green"</span>, lwd=<span class="number">2</span>)    </div><div class="line">lines(smooth.spline(time.1, value.1, spar=<span class="number">1</span>), col=<span class="string">"gold"</span>, lwd=<span class="number">2</span>)    </div><div class="line">abline(lm(value.1 ~ time.1), col=<span class="string">"black"</span>, lwd=<span class="number">2</span>)</div><div class="line">legend(<span class="string">"topright"</span>, legend=c(<span class="string">"ksmooth"</span>, <span class="string">"supsmu"</span>, <span class="string">"lowess"</span>, <span class="string">"smooth.spline"</span>, <span class="string">"lm"</span>), col = c(<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>, <span class="string">"gold"</span>, <span class="string">"black"</span>), lwd=<span class="number">2</span>, cex = <span class="number">0.6</span>)</div></pre></td></tr></table></figure>
+<p><img src="/figure/一个好用的时间序列分析R包astsa//unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;"></p>
+<h4 id="查看LAG间的关系"><a href="#查看LAG间的关系" class="headerlink" title="查看LAG间的关系"></a>查看LAG间的关系</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(xts)</div><div class="line"><span class="keyword">library</span>(astsa)</div><div class="line">ts.2 &lt;- as.xts(ts.1)</div><div class="line"></div><div class="line"><span class="comment">### 单变量</span></div><div class="line">lag1.plot(ts.2, max.lag = <span class="number">6</span>, corr = <span class="literal">TRUE</span>, smooth = <span class="literal">TRUE</span>)</div></pre></td></tr></table></figure>
+<p><img src="/figure/一个好用的时间序列分析R包astsa//unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" style="display: block; margin: auto;"></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 双变量间关系: lag2.plot()</span></div></pre></td></tr></table></figure>
+<h4 id="ARIMA-模型拟合与预测"><a href="#ARIMA-模型拟合与预测" class="headerlink" title="ARIMA 模型拟合与预测"></a>ARIMA 模型拟合与预测</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plot.acf &lt;- acf2(ts.2)</div></pre></td></tr></table></figure>
+<p><img src="/figure/一个好用的时间序列分析R包astsa//unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;"></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fit.sarima.1 &lt;- sarima(ts.2, p=<span class="number">6</span>, d=<span class="number">0</span>, q=<span class="number">0</span>, details = <span class="literal">FALSE</span>)</div></pre></td></tr></table></figure>
+<p><img src="/figure/一个好用的时间序列分析R包astsa//unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" style="display: block; margin: auto;"></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fit.sarima.1$fit</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">## </div><div class="line">## Call:</div><div class="line">## stats::arima(x = xdata, order = c(p, d, q), seasonal = list(order = c(P, D, </div><div class="line">##     Q), period = S), xreg = xmean, include.mean = FALSE, optim.control = list(trace = trc, </div><div class="line">##     REPORT = 1, reltol = tol))</div><div class="line">## </div><div class="line">## Coefficients:</div><div class="line">##          ar1     ar2     ar3     ar4     ar5     ar6   xmean</div><div class="line">##       0.0316  0.1178  0.0272  0.0888  0.0657  0.1121  1.4607</div><div class="line">## s.e.  0.0265  0.0264  0.0265  0.0265  0.0265  0.0266  0.0064</div><div class="line">## </div><div class="line">## sigma^2 estimated as 0.01772:  log likelihood = 841.4,  aic = -1666.81</div></pre></td></tr></table></figure>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fore.2 &lt;- sarima.for(ts.2, n.ahead=<span class="number">20</span>, p=<span class="number">6</span>, d=<span class="number">0</span>, q=<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p><img src="/figure/一个好用的时间序列分析R包astsa/unnamed-chunk-10-1.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" style="display: block; margin: auto;"></p>
+<h4 id="频谱分析与信号提取"><a href="#频谱分析与信号提取" class="headerlink" title="频谱分析与信号提取"></a>频谱分析与信号提取</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ts.3 &lt;- as.xts(ts.raw)</div><div class="line">mvspec(ts.3, spans = <span class="number">20</span>, log=<span class="string">"no"</span>)</div></pre></td></tr></table></figure>
+<p><img src="/figure/一个好用的时间序列分析R包astsa/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;"></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SigExtract(ts.3)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">## The filter coefficients are </div><div class="line">##         s          a(s)</div><div class="line">##  [1,]   0  8.000000e-02</div><div class="line">##  [2,]  -1  7.810597e-02</div><div class="line">##  [3,]  -2  7.258885e-02</div><div class="line">##  [4,]  -3  6.392528e-02</div><div class="line">##  [5,]  -4  5.285104e-02</div><div class="line">##  [6,]  -5  4.028083e-02</div><div class="line">##  [7,]  -6  2.721038e-02</div><div class="line">##  [8,]  -7  1.461279e-02</div><div class="line">##  [9,]  -8  3.341906e-03</div><div class="line">## [10,]  -9 -5.946299e-03</div><div class="line">## [11,] -10 -1.284528e-02</div><div class="line">## [12,] -11 -1.721763e-02</div><div class="line">## [13,] -12 -1.918221e-02</div><div class="line">## [14,] -13 -1.907220e-02</div><div class="line">## [15,] -14 -1.737134e-02</div><div class="line">## [16,] -15 -1.463808e-02</div><div class="line">## [17,] -16 -1.142862e-02</div><div class="line">## [18,] -17 -8.229104e-03</div><div class="line">## [19,] -18 -5.405759e-03</div><div class="line">## [20,] -19 -3.178390e-03</div><div class="line">## [21,] -20 -1.619119e-03</div><div class="line">## [22,] -21 -6.743622e-04</div><div class="line">## [23,] -22 -2.046001e-04</div><div class="line">## [24,] -23 -3.403312e-05</div><div class="line">## [25,] -24 -9.669615e-07</div><div class="line">## for s &gt;=0; and a(-s) = a(s).</div></pre></td></tr></table></figure>
+<p><img src="/figure/一个好用的时间序列分析R包astsa/unnamed-chunk-11-2.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;"></p>
+<center><img src="/figure/一个好用的时间序列分析R包astsa/filterfun.png" alt=""></center><br><center><img src="/figure/一个好用的时间序列分析R包astsa/filteredseries.png" alt=""></center><br><center><img src="/figure/一个好用的时间序列分析R包astsa/after filter.png" alt=""></center>
+
+
+
+<p><strong>Note:</strong> <code>SigExtract()</code>具有非常好的滤波与信号提取功能，可自动输出三张图：</p>
+<ol>
+<li>the original and filtered series, </li>
+<li>the estiamted spectra of each series, </li>
+<li>the filter coefficients and the desired and attained frequency response function.</li>
+</ol>
+<p>但因为它同时使用了三个不同的图形窗口输出，导致三张图无法直接输出到markdown中（如果哪位高手已解决了该问题请反馈给我^_^），应用时可以复制/粘贴到所需要的地方，或者导出为外部图片做后续应用，此文档中采用了后者方法。</p>
+<h4 id="应用小结"><a href="#应用小结" class="headerlink" title="应用小结"></a>应用小结</h4><p>上面介绍的是该包中最常用的几个特色函数，应用简单、输出友好，但可以解决日常70-80%的问题，余下来的那20%，就请学习它的配套教材<em>Time Series Analysis and Its Applications: With R Examples</em>吧。</p>
+<p>虽然本文意在推荐<code>astsa</code>，但应用中也必然用到了很多其它包的支持（见代码），在众多R包中如何选择合适的包并组合应用，实属仁者见仁智者见智，大家的原料一样，但却可以做出不同的工作，站在巨人的肩上思考创新，这也正是应用R的魅力所在。</p>
+<h3 id="引用说明"><a href="#引用说明" class="headerlink" title="引用说明"></a>引用说明</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">citation(<span class="string">"astsa"</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">## </div><div class="line">## To cite package &apos;astsa&apos; in publications use:</div><div class="line">## </div><div class="line">##   David Stoffer (2016). astsa: Applied Statistical Time Series</div><div class="line">##   Analysis. R package version 1.6.</div><div class="line">##   https://CRAN.R-project.org/package=astsa</div><div class="line">## </div><div class="line">## A BibTeX entry for LaTeX users is</div><div class="line">## </div><div class="line">##   @Manual&#123;,</div><div class="line">##     title = &#123;astsa: Applied Statistical Time Series Analysis&#125;,</div><div class="line">##     author = &#123;David Stoffer&#125;,</div><div class="line">##     year = &#123;2016&#125;,</div><div class="line">##     note = &#123;R package version 1.6&#125;,</div><div class="line">##     url = &#123;https://CRAN.R-project.org/package=astsa&#125;,</div><div class="line">##   &#125;</div><div class="line">## </div><div class="line">## ATTENTION: This citation information has been auto-generated from</div><div class="line">## the package DESCRIPTION file and may need manual editing, see</div><div class="line">## &apos;help(&quot;citation&quot;)&apos;.</div></pre></td></tr></table></figure>
+<hr>
+<p>阿广Max，数据分析与应用爱好者，<a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#120;&#x69;&#x6e;&#103;&#117;&#x61;&#x6e;&#103;&#95;&#x6c;&#105;&#117;&#x40;&#x31;&#x36;&#51;&#46;&#x63;&#x6f;&#109;">&#120;&#x69;&#x6e;&#103;&#117;&#x61;&#x6e;&#103;&#95;&#x6c;&#105;&#117;&#x40;&#x31;&#x36;&#51;&#46;&#x63;&#x6f;&#109;</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/R-包/" rel="tag"># R 包</a>
+          
+            <a href="/tags/astsa/" rel="tag"># astsa</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/03/extend-the-modeling-output2/" rel="prev" title="Extend the Modeling Output">
+                Extend the Modeling Output <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/01/一个好用的时间序列分析R包astsa/"
+           data-title="一个好用的时间序列分析R包astsa" data-url="http://yoursite.com/2016/05/01/一个好用的时间序列分析R包astsa/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/lxg3.png"
+               alt="Xinguang Liu" />
+          <p class="site-author-name" itemprop="name">Xinguang Liu</p>
+          <p class="site-description motion-element" itemprop="description">Good good study, day day up.</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xinguangliu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://cn.linkedin.com/in/xinguangliu" target="_blank" title="Linkedin">
+                  
+                    <i class="fa fa-fw fa-linkedin-square"></i>
+                  
+                  Linkedin
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#astsa-R包简介"><span class="nav-number">1.</span> <span class="nav-text">astsa R包简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#astsa-应用示例"><span class="nav-number">2.</span> <span class="nav-text">astsa 应用示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据源说明"><span class="nav-number">2.1.</span> <span class="nav-text">数据源说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据表整合"><span class="nav-number">2.2.</span> <span class="nav-text">数据表整合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原始数据图示"><span class="nav-number">2.3.</span> <span class="nav-text">原始数据图示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#趋势拟合"><span class="nav-number">2.4.</span> <span class="nav-text">趋势拟合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看LAG间的关系"><span class="nav-number">2.5.</span> <span class="nav-text">查看LAG间的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ARIMA-模型拟合与预测"><span class="nav-number">2.6.</span> <span class="nav-text">ARIMA 模型拟合与预测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#频谱分析与信号提取"><span class="nav-number">2.7.</span> <span class="nav-text">频谱分析与信号提取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用小结"><span class="nav-number">2.8.</span> <span class="nav-text">应用小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用说明"><span class="nav-number">3.</span> <span class="nav-text">引用说明</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xinguang Liu</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xinguangliu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("zjb9Gn8ccW4Hp1LJueCgonMO-gzGzoHsz", "k213aq7u1IOPDgr5Xof6efti");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
