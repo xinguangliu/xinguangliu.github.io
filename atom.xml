@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-14T07:03:26.035Z</updated>
+  <updated>2017-01-16T16:33:52.808Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,101 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>R01-右删失寿命数据的 Kaplan-Meier 非参数估计</title>
+    <link href="http://yoursite.com/2017/01/17/01-Kaplan-Meier_reliability/"/>
+    <id>http://yoursite.com/2017/01/17/01-Kaplan-Meier_reliability/</id>
+    <published>2017-01-16T16:26:16.408Z</published>
+    <updated>2017-01-16T16:33:52.808Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="寿命数据背景"><a href="#寿命数据背景" class="headerlink" title="寿命数据背景"></a>寿命数据背景</h2><p>有22个样品投入寿命试验，其中11个样品失效，<br>其余样品未失效但中途退出了测试，数据记录如下，问：这些测试数据表征了什么产品可靠性含义？</p>
+<a id="more"></a>
+<p>原始数据图示：</p>
+<p><img src="/figure/01-Kaplan-Meier_reliability_files/figure-html/rawplot-1.png" width="70%" style="display: block; margin: auto;"></p>
+<p>样本数据的前6条记录：</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>time</th>
+<th>cens</th>
+<th>status </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> P001</td>
+<td>287.6</td>
+<td>1</td>
+<td>失效  </td>
+</tr>
+<tr>
+<td> P002</td>
+<td>788.3</td>
+<td>1</td>
+<td>失效  </td>
+</tr>
+<tr>
+<td> P003</td>
+<td>409.0</td>
+<td>1</td>
+<td>失效  </td>
+</tr>
+<tr>
+<td> P004</td>
+<td>883.0</td>
+<td>1</td>
+<td>失效  </td>
+</tr>
+<tr>
+<td> P005</td>
+<td>940.5</td>
+<td>1</td>
+<td>失效  </td>
+</tr>
+<tr>
+<td> P006</td>
+<td>45.6</td>
+<td>1</td>
+<td>失效  </td>
+</tr>
+</tbody>
+</table>
+<p>原始数据的删失形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#&gt;  [1] 287.6  788.3  409.0  883.0  940.5   45.6  528.1+ 892.4+ 551.4  456.6 </div><div class="line">#&gt; [11] 956.8  453.3  677.6+ 572.6+ 102.9  899.8+ 246.1+  42.1+ 327.9+ 954.5+</div><div class="line">#&gt; [21] 889.5+ 692.8+</div></pre></td></tr></table></figure>
+<h2 id="建模回归"><a href="#建模回归" class="headerlink" title="建模回归"></a>建模回归</h2><h3 id="非参数回归"><a href="#非参数回归" class="headerlink" title="非参数回归"></a>非参数回归</h3><p>Kaplan-Meier 回归模型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#&gt; Call: survfit(formula = Surv(time, cens) ~ 1, data = df, conf.type = &quot;log-log&quot;)</div><div class="line">#&gt; </div><div class="line">#&gt;   time n.risk n.event survival std.err lower 95% CI upper 95% CI</div><div class="line">#&gt;   45.6     21       1    0.952  0.0465       0.7072        0.993</div><div class="line">#&gt;  102.9     20       1    0.905  0.0641       0.6700        0.975</div><div class="line">#&gt;  287.6     18       1    0.854  0.0778       0.6133        0.951</div><div class="line">#&gt;  409.0     16       1    0.801  0.0894       0.5519        0.921</div><div class="line">#&gt;  453.3     15       1    0.748  0.0981       0.4946        0.887</div><div class="line">#&gt;  456.6     14       1    0.694  0.1046       0.4406        0.850</div><div class="line">#&gt;  551.4     12       1    0.636  0.1107       0.3824        0.809</div><div class="line">#&gt;  788.3      8       1    0.557  0.1222       0.2951        0.755</div><div class="line">#&gt;  883.0      7       1    0.477  0.1280       0.2219        0.695</div><div class="line">#&gt;  940.5      3       1    0.318  0.1554       0.0712        0.609</div><div class="line">#&gt;  956.8      1       1    0.000     NaN           NA           NA</div></pre></td></tr></table></figure>
+<p>可靠性随时间的关系:</p>
+<p><img src="/figure/01-Kaplan-Meier_reliability_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;"></p>
+<p>累积失效率分布趋势:</p>
+<p><img src="/figure/01-Kaplan-Meier_reliability_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;"></p>
+<h3 id="参数回归"><a href="#参数回归" class="headerlink" title="参数回归"></a>参数回归</h3><h4 id="模型拟合分布识别"><a href="#模型拟合分布识别" class="headerlink" title="模型拟合分布识别"></a>模型拟合分布识别</h4><p>选择AIC作为模型拟合优度判断指标：</p>
+<p><img src="/figure/01-Kaplan-Meier_reliability_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;"></p>
+<h4 id="详细的参数回归见下节。"><a href="#详细的参数回归见下节。" class="headerlink" title="详细的参数回归见下节。"></a>详细的参数回归见下节。</h4>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;寿命数据背景&quot;&gt;&lt;a href=&quot;#寿命数据背景&quot; class=&quot;headerlink&quot; title=&quot;寿命数据背景&quot;&gt;&lt;/a&gt;寿命数据背景&lt;/h2&gt;&lt;p&gt;有22个样品投入寿命试验，其中11个样品失效，&lt;br&gt;其余样品未失效但中途退出了测试，数据记录如下，问：这些测试数据表征了什么产品可靠性含义？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="reliability" scheme="http://yoursite.com/categories/reliability/"/>
+    
+      <category term="lifedata" scheme="http://yoursite.com/categories/reliability/lifedata/"/>
+    
+      <category term="survival" scheme="http://yoursite.com/categories/reliability/lifedata/survival/"/>
+    
+    
+      <category term="reliability" scheme="http://yoursite.com/tags/reliability/"/>
+    
+      <category term="R 包" scheme="http://yoursite.com/tags/R-%E5%8C%85/"/>
+    
+      <category term="lifedata" scheme="http://yoursite.com/tags/lifedata/"/>
+    
+      <category term="survival" scheme="http://yoursite.com/tags/survival/"/>
+    
+  </entry>
   
   <entry>
     <title>Enjoy</title>
@@ -502,7 +597,7 @@
 <h3 id="引用说明"><a href="#引用说明" class="headerlink" title="引用说明"></a>引用说明</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">citation(<span class="string">"astsa"</span>)</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">## </div><div class="line">## To cite package &apos;astsa&apos; in publications use:</div><div class="line">## </div><div class="line">##   David Stoffer (2016). astsa: Applied Statistical Time Series</div><div class="line">##   Analysis. R package version 1.6.</div><div class="line">##   https://CRAN.R-project.org/package=astsa</div><div class="line">## </div><div class="line">## A BibTeX entry for LaTeX users is</div><div class="line">## </div><div class="line">##   @Manual&#123;,</div><div class="line">##     title = &#123;astsa: Applied Statistical Time Series Analysis&#125;,</div><div class="line">##     author = &#123;David Stoffer&#125;,</div><div class="line">##     year = &#123;2016&#125;,</div><div class="line">##     note = &#123;R package version 1.6&#125;,</div><div class="line">##     url = &#123;https://CRAN.R-project.org/package=astsa&#125;,</div><div class="line">##   &#125;</div><div class="line">## </div><div class="line">## ATTENTION: This citation information has been auto-generated from</div><div class="line">## the package DESCRIPTION file and may need manual editing, see</div><div class="line">## &apos;help(&quot;citation&quot;)&apos;.</div></pre></td></tr></table></figure>
 <hr>
-<p>阿广Max，数据分析与应用爱好者，<a href="&#109;&#97;&#105;&#x6c;&#116;&#111;&#58;&#x78;&#x69;&#x6e;&#103;&#117;&#x61;&#110;&#x67;&#95;&#x6c;&#x69;&#117;&#x40;&#49;&#x36;&#x33;&#x2e;&#x63;&#111;&#109;">&#x78;&#x69;&#x6e;&#103;&#117;&#x61;&#110;&#x67;&#95;&#x6c;&#x69;&#117;&#x40;&#49;&#x36;&#x33;&#x2e;&#x63;&#111;&#109;</a></p>
+<p>阿广Max，数据分析与应用爱好者，<a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#120;&#x69;&#110;&#x67;&#x75;&#97;&#110;&#x67;&#95;&#108;&#x69;&#117;&#64;&#49;&#x36;&#51;&#46;&#x63;&#111;&#x6d;">&#120;&#x69;&#110;&#x67;&#x75;&#97;&#110;&#x67;&#95;&#108;&#x69;&#117;&#64;&#49;&#x36;&#51;&#46;&#x63;&#111;&#x6d;</a></p>
 ]]></content>
     
     <summary type="html">
