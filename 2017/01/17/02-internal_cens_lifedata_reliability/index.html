@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Win7,Ubuntu 16.04,桌面控制," />
+  <meta name="keywords" content="reliability,R 包,lifedata,survival," />
 
 
 
@@ -86,27 +86,32 @@
 
 
 
-<meta name="description" content="环境主机系统win7, 用VBox安装Ubuntu 16.04虚拟机。
-开启远程桌面共享在/usr/share/applications目录下打开”桌面共享”选项,">
+<meta name="description" content="寿命数据常见的寿命数据组成通常有两类：
+
+失效数据和右删失数据的混合；
+失效数据、右删失、左删失和区间删失的混合。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Win7 远程VNC桌面控制 Ubuntu16.04">
-<meta property="og:url" content="http://yoursite.com/2017/01/13/win7-VNC-to-Ubuntu16/index.html">
+<meta property="og:title" content="R02-混合删失寿命数据分析">
+<meta property="og:url" content="http://yoursite.com/2017/01/17/02-internal_cens_lifedata_reliability/index.html">
 <meta property="og:site_name" content="LXG">
-<meta property="og:description" content="环境主机系统win7, 用VBox安装Ubuntu 16.04虚拟机。
-开启远程桌面共享在/usr/share/applications目录下打开”桌面共享”选项,">
-<meta property="og:image" content="http://yoursite.com/figure/win7-VNC-to-Ubuntu16/3.png">
-<meta property="og:image" content="http://yoursite.com/figure/win7-VNC-to-Ubuntu16/4.png">
-<meta property="og:image" content="http://yoursite.com/figure/win7-VNC-to-Ubuntu16/5.png">
-<meta property="og:image" content="http://yoursite.com/figure/win7-VNC-to-Ubuntu16/6.png">
-<meta property="og:image" content="http://yoursite.com/figure/win7-VNC-to-Ubuntu16/7.png">
-<meta property="og:image" content="http://yoursite.com/figure/win7-VNC-to-Ubuntu16/2.png">
-<meta property="og:image" content="http://yoursite.com/figure/win7-VNC-to-Ubuntu16/1.png">
-<meta property="og:updated_time" content="2017-01-13T09:38:25.779Z">
+<meta property="og:description" content="寿命数据常见的寿命数据组成通常有两类：
+
+失效数据和右删失数据的混合；
+失效数据、右删失、左删失和区间删失的混合。">
+<meta property="og:image" content="http://yoursite.com/figure/02-internal_cens_lifedata_reliability_files/figure-html/rawplot-1.png">
+<meta property="og:image" content="http://yoursite.com/figure/02-internal_cens_lifedata_reliability_files/figure-html/unnamed-chunk-4-1.png">
+<meta property="og:image" content="http://yoursite.com/figure/02-internal_cens_lifedata_reliability_files/figure-html/unnamed-chunk-5-1.png">
+<meta property="og:image" content="http://yoursite.com/figure/02-internal_cens_lifedata_reliability_files/figure-html/unnamed-chunk-6-1.png">
+<meta property="og:image" content="http://yoursite.com/figure/02-internal_cens_lifedata_reliability_files/figure-html/unnamed-chunk-9-1.png">
+<meta property="og:image" content="http://yoursite.com/figure/02-internal_cens_lifedata_reliability_files/figure-html/unnamed-chunk-10-1.png">
+<meta property="og:updated_time" content="2017-01-17T15:33:17.505Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Win7 远程VNC桌面控制 Ubuntu16.04">
-<meta name="twitter:description" content="环境主机系统win7, 用VBox安装Ubuntu 16.04虚拟机。
-开启远程桌面共享在/usr/share/applications目录下打开”桌面共享”选项,">
-<meta name="twitter:image" content="http://yoursite.com/figure/win7-VNC-to-Ubuntu16/3.png">
+<meta name="twitter:title" content="R02-混合删失寿命数据分析">
+<meta name="twitter:description" content="寿命数据常见的寿命数据组成通常有两类：
+
+失效数据和右删失数据的混合；
+失效数据、右删失、左删失和区间删失的混合。">
+<meta name="twitter:image" content="http://yoursite.com/figure/02-internal_cens_lifedata_reliability_files/figure-html/rawplot-1.png">
 
 
 
@@ -134,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/13/win7-VNC-to-Ubuntu16/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/17/02-internal_cens_lifedata_reliability/"/>
 
 
 
 
 
-  <title> Win7 远程VNC桌面控制 Ubuntu16.04 | LXG </title>
+  <title> R02-混合删失寿命数据分析 | LXG </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -288,7 +293,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/13/win7-VNC-to-Ubuntu16/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/17/02-internal_cens_lifedata_reliability/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Xinguang Liu">
@@ -312,7 +317,7 @@
             
             
               
-                Win7 远程VNC桌面控制 Ubuntu16.04
+                R02-混合删失寿命数据分析
               
             
           </h1>
@@ -327,8 +332,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-13T17:30:46+08:00">
-                2017-01-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-17T23:30:31+08:00">
+                2017-01-17
               </time>
             
 
@@ -343,8 +348,8 @@
               
                 <span class="post-meta-item-text">Post modified</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-01-13T17:38:25+08:00">
-                2017-01-13
+              <time title="Post modified" itemprop="dateModified" datetime="2017-01-17T23:33:17+08:00">
+                2017-01-17
               </time>
             
           </span>
@@ -362,8 +367,30 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Win-2-Ubuntu/" itemprop="url" rel="index">
-                    <span itemprop="name">Win-2-Ubuntu</span>
+                  <a href="/categories/reliability/" itemprop="url" rel="index">
+                    <span itemprop="name">reliability</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/reliability/lifedata/" itemprop="url" rel="index">
+                    <span itemprop="name">lifedata</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/reliability/lifedata/survival/" itemprop="url" rel="index">
+                    <span itemprop="name">survival</span>
                   </a>
                 </span>
 
@@ -380,8 +407,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/13/win7-VNC-to-Ubuntu16/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/13/win7-VNC-to-Ubuntu16/" itemprop="commentCount"></span>
+                <a href="/2017/01/17/02-internal_cens_lifedata_reliability/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/17/02-internal_cens_lifedata_reliability/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -391,7 +418,7 @@
 
           
           
-             <span id="/2017/01/13/win7-VNC-to-Ubuntu16/" class="leancloud_visitors" data-flag-title="Win7 远程VNC桌面控制 Ubuntu16.04">
+             <span id="/2017/01/17/02-internal_cens_lifedata_reliability/" class="leancloud_visitors" data-flag-title="R02-混合删失寿命数据分析">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -423,20 +450,83 @@
       
 
       
-        <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>主机系统<code>win7</code>, 用<code>VBox</code>安装<code>Ubuntu 16.04</code>虚拟机。</p>
-<h2 id="开启远程桌面共享"><a href="#开启远程桌面共享" class="headerlink" title="开启远程桌面共享"></a>开启远程桌面共享</h2><p>在<code>/usr/share/applications</code>目录下打开”桌面共享”选项,</p>
+        <h2 id="寿命数据"><a href="#寿命数据" class="headerlink" title="寿命数据"></a>寿命数据</h2><p>常见的寿命数据组成通常有两类：</p>
+<ul>
+<li>失效数据和右删失数据的混合；</li>
+<li>失效数据、右删失、左删失和区间删失的混合。</li>
+</ul>
 <a id="more"></a>
-<p><img src="/figure/win7-VNC-to-Ubuntu16/3.png" alt=""></p>
-<p><img src="/figure/win7-VNC-to-Ubuntu16/4.png" alt=""></p>
-<h2 id="安装dconf-editor"><a href="#安装dconf-editor" class="headerlink" title="安装dconf-editor"></a>安装dconf-editor</h2><pre><code>sudo apt-get install dconf-editor
-</code></pre><h2 id="打开Dconf-editor做配置"><a href="#打开Dconf-editor做配置" class="headerlink" title="打开Dconf-editor做配置"></a>打开Dconf-editor做配置</h2><p><img src="/figure/win7-VNC-to-Ubuntu16/5.png" alt=""></p>
-<p>路径：org &gt; gnome &gt; desktop &gt; remote-access</p>
-<p><img src="/figure/win7-VNC-to-Ubuntu16/6.png" alt=""><br><img src="/figure/win7-VNC-to-Ubuntu16/7.png" alt=""></p>
-<p>取消钩选 “requlre-encryption”属性</p>
-<h2 id="win7上用VNC客户端连接"><a href="#win7上用VNC客户端连接" class="headerlink" title="win7上用VNC客户端连接"></a>win7上用VNC客户端连接</h2><p>输入IP地址 （端口默认5900）</p>
-<p><img src="/figure/win7-VNC-to-Ubuntu16/2.png" alt=""></p>
-<p><img src="/figure/win7-VNC-to-Ubuntu16/1.png" alt=""></p>
-<p>连接成功。</p>
+<p>下面例子模拟第二类数据的数据分析：</p>
+<p>有22个样品投入寿命试验，其中数据记录如下，<br>问：这些测试数据表征了什么产品可靠性含义？</p>
+<p>数据图示：</p>
+<p><img src="/figure/02-internal_cens_lifedata_reliability_files/figure-html/rawplot-1.png" width="70%" style="display: block; margin: auto;"></p>
+<p>样本数据的前6条记录：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ID</th>
+<th style="text-align:center">left</th>
+<th style="text-align:center">right</th>
+<th style="text-align:center">status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">P001</td>
+<td style="text-align:center">114</td>
+<td style="text-align:center">NA</td>
+<td style="text-align:center">右删失</td>
+</tr>
+<tr>
+<td style="text-align:center">P002</td>
+<td style="text-align:center">622</td>
+<td style="text-align:center">NA</td>
+<td style="text-align:center">右删失</td>
+</tr>
+<tr>
+<td style="text-align:center">P003</td>
+<td style="text-align:center">609</td>
+<td style="text-align:center">609</td>
+<td style="text-align:center">失效</td>
+</tr>
+<tr>
+<td style="text-align:center">P004</td>
+<td style="text-align:center">623</td>
+<td style="text-align:center">823</td>
+<td style="text-align:center">区间删失</td>
+</tr>
+<tr>
+<td style="text-align:center">P005</td>
+<td style="text-align:center">861</td>
+<td style="text-align:center">911</td>
+<td style="text-align:center">区间删失</td>
+</tr>
+<tr>
+<td style="text-align:center">P006</td>
+<td style="text-align:center">640</td>
+<td style="text-align:center">840</td>
+<td style="text-align:center">区间删失</td>
+</tr>
+</tbody>
+</table>
+<p>原始数据的删失形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#&gt;  [1] 114+        622+        609         [623,  823] [861,  911]</div><div class="line">#&gt;  [6] [640,  840] [  9,  209] 233+        [666,  716] 514        </div><div class="line">#&gt; [11] 694         [545,  595] 283+        [923, 1023] 292        </div><div class="line">#&gt; [16] 837         [286,  486] [267,  467] [187,  237] [232,  332]</div><div class="line">#&gt; [21] 317         [303,  403]</div></pre></td></tr></table></figure>
+<h2 id="建模回归"><a href="#建模回归" class="headerlink" title="建模回归"></a>建模回归</h2><h3 id="非参数回归"><a href="#非参数回归" class="headerlink" title="非参数回归"></a>非参数回归</h3><p>Kaplan-Meier 回归模型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#&gt; Call: survfit(formula = Surv(left, right, type = &quot;interval2&quot;) ~ 1, </div><div class="line">#&gt;     data = df, conf.type = &quot;log-log&quot;)</div><div class="line">#&gt; </div><div class="line">#&gt;  time n.risk  n.event survival std.err lower 95% CI upper 95% CI</div><div class="line">#&gt;   198  21.00 2.00e+00   0.9048  0.0641       0.7875        1.000</div><div class="line">#&gt;   235  18.00 1.21e-14   0.9048  0.0641       0.7875        1.000</div><div class="line">#&gt;   292  17.00 2.00e+00   0.7983  0.0905       0.6392        0.997</div><div class="line">#&gt;   317  15.00 4.00e+00   0.5854  0.1128       0.4014        0.854</div><div class="line">#&gt;   324  11.00 2.66e-14   0.5854  0.1128       0.4014        0.854</div><div class="line">#&gt;   514  11.00 1.00e+00   0.5322  0.1144       0.3493        0.811</div><div class="line">#&gt;   570  10.00 1.00e+00   0.4790  0.1147       0.2996        0.766</div><div class="line">#&gt;   609   9.00 1.00e+00   0.4258  0.1136       0.2524        0.718</div><div class="line">#&gt;   694   7.00 3.75e+00   0.1977  0.0960       0.0763        0.512</div><div class="line">#&gt;   705   3.25 1.65e-07   0.1977  0.0960       0.0763        0.512</div><div class="line">#&gt;   837   3.25 1.25e+00   0.1216  0.0796       0.0337        0.439</div><div class="line">#&gt;   886   2.00 1.00e+00   0.0608  0.0586       0.0092        0.402</div><div class="line">#&gt;   973   1.00 1.00e+00   0.0000     NaN           NA           NA</div></pre></td></tr></table></figure>
+<p>可靠性随时间的关系:</p>
+<p><img src="/figure/02-internal_cens_lifedata_reliability_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;"></p>
+<p>累积失效率分布趋势:</p>
+<p><img src="/figure/02-internal_cens_lifedata_reliability_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;"></p>
+<h3 id="参数回归"><a href="#参数回归" class="headerlink" title="参数回归"></a>参数回归</h3><h4 id="模型拟合分布识别"><a href="#模型拟合分布识别" class="headerlink" title="模型拟合分布识别"></a>模型拟合分布识别</h4><p>选择AIC作为模型拟合优度判断指标：</p>
+<p><img src="/figure/02-internal_cens_lifedata_reliability_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;"></p>
+<h4 id="模型参数回归"><a href="#模型参数回归" class="headerlink" title="模型参数回归"></a>模型参数回归</h4><p><code>weibull</code>模型回归：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#&gt; </div><div class="line">#&gt; Call:</div><div class="line">#&gt; survreg(formula = Surv(left, right, type = &quot;interval2&quot;) ~ 1, </div><div class="line">#&gt;     data = df, dist = &quot;weibull&quot;)</div><div class="line">#&gt;              Value Std. Error     z        p</div><div class="line">#&gt; (Intercept)  6.435     0.0985 65.33 0.00e+00</div><div class="line">#&gt; Log(scale)  -0.908     0.1922 -4.72 2.31e-06</div><div class="line">#&gt; </div><div class="line">#&gt; Scale= 0.403 </div><div class="line">#&gt; </div><div class="line">#&gt; Weibull distribution</div><div class="line">#&gt; Loglik(model)= -69.4   Loglik(intercept only)= -69.4</div><div class="line">#&gt; Number of Newton-Raphson Iterations: 7 </div><div class="line">#&gt; n= 22</div></pre></td></tr></table></figure>
+<p>参数拟合结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#&gt;   shape scale</div><div class="line">#&gt; 1  2.48   624</div></pre></td></tr></table></figure>
+<p>图示：</p>
+<p><img src="/figure/02-internal_cens_lifedata_reliability_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;"></p>
+<h4 id="模型行为分析"><a href="#模型行为分析" class="headerlink" title="模型行为分析"></a>模型行为分析</h4><p><img src="/figure/02-internal_cens_lifedata_reliability_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;"></p>
+<h4 id="预测预报"><a href="#预测预报" class="headerlink" title="预测预报"></a>预测预报</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#&gt;   Time.pred Reliability.pred</div><div class="line">#&gt; 1       500             0.56</div><div class="line">#&gt; 2      1000             0.04</div><div class="line">#&gt; 3      1500             0.00</div><div class="line">#&gt; 4      2000             0.00</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -460,11 +550,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Win7/" rel="tag"># Win7</a>
+            <a href="/tags/reliability/" rel="tag"># reliability</a>
           
-            <a href="/tags/Ubuntu-16-04/" rel="tag"># Ubuntu 16.04</a>
+            <a href="/tags/R-包/" rel="tag"># R 包</a>
           
-            <a href="/tags/桌面控制/" rel="tag"># 桌面控制</a>
+            <a href="/tags/lifedata/" rel="tag"># lifedata</a>
+          
+            <a href="/tags/survival/" rel="tag"># survival</a>
           
         </div>
       
@@ -473,8 +565,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/13/win7-shareFolder-with-Ubuntu/" rel="next" title="Win7 与 Ubuntu16.04 共享文件">
-                <i class="fa fa-chevron-left"></i> Win7 与 Ubuntu16.04 共享文件
+              <a href="/2017/01/17/01-right_cens_lifedata_reliability/" rel="next" title="R01-右删失寿命数据分析">
+                <i class="fa fa-chevron-left"></i> R01-右删失寿命数据分析
               </a>
             
           </div>
@@ -482,10 +574,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/13/win7-to-Ubuntu16-by-putty/" rel="prev" title="Win 7 中用 Putty 远程连接 Ubuntu 16">
-                Win 7 中用 Putty 远程连接 Ubuntu 16 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -534,8 +622,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/13/win7-VNC-to-Ubuntu16/"
-           data-title="Win7 远程VNC桌面控制 Ubuntu16.04" data-url="http://yoursite.com/2017/01/13/win7-VNC-to-Ubuntu16/">
+      <div class="ds-thread" data-thread-key="2017/01/17/02-internal_cens_lifedata_reliability/"
+           data-title="R02-混合删失寿命数据分析" data-url="http://yoursite.com/2017/01/17/02-internal_cens_lifedata_reliability/">
       </div>
     
   </div>
@@ -662,7 +750,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开启远程桌面共享"><span class="nav-number">2.</span> <span class="nav-text">开启远程桌面共享</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装dconf-editor"><span class="nav-number">3.</span> <span class="nav-text">安装dconf-editor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开Dconf-editor做配置"><span class="nav-number">4.</span> <span class="nav-text">打开Dconf-editor做配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#win7上用VNC客户端连接"><span class="nav-number">5.</span> <span class="nav-text">win7上用VNC客户端连接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#寿命数据"><span class="nav-number">1.</span> <span class="nav-text">寿命数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建模回归"><span class="nav-number">2.</span> <span class="nav-text">建模回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#非参数回归"><span class="nav-number">2.1.</span> <span class="nav-text">非参数回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数回归"><span class="nav-number">2.2.</span> <span class="nav-text">参数回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#模型拟合分布识别"><span class="nav-number">2.2.1.</span> <span class="nav-text">模型拟合分布识别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型参数回归"><span class="nav-number">2.2.2.</span> <span class="nav-text">模型参数回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型行为分析"><span class="nav-number">2.2.3.</span> <span class="nav-text">模型行为分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#预测预报"><span class="nav-number">2.2.4.</span> <span class="nav-text">预测预报</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
