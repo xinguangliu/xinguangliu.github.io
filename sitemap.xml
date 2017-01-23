@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/01/23/computing-thousands-of-test-statistics-simultaneously-in-R/</loc>
+    
+    <lastmod>2017-01-23T08:58:29.732Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/figure/computing-thousands-of-test-statistics-simultaneously-in-R.html</loc>
+    
+    <lastmod>2017-01-23T08:54:10.303Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/01/17/02-internal_cens_lifedata_reliability/</loc>
     
     <lastmod>2017-01-17T15:33:17.505Z</lastmod>
