@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/02/10/learning-curve-for-training-data-size/</loc>
+    
+    <lastmod>2017-02-10T16:03:20.664Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/figure/learning-curve-for-training-data-size.html</loc>
+    
+    <lastmod>2017-02-10T15:58:35.277Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/01/23/computing-thousands-of-test-statistics-simultaneously-in-R/</loc>
     
     <lastmod>2017-01-23T10:37:01.350Z</lastmod>
