@@ -743,9 +743,9 @@
       <category term="R" scheme="http://yoursite.com/categories/conference/R/"/>
     
     
-      <category term="R" scheme="http://yoursite.com/tags/R/"/>
-    
       <category term="reliability" scheme="http://yoursite.com/tags/reliability/"/>
+    
+      <category term="R" scheme="http://yoursite.com/tags/R/"/>
     
   </entry>
   
@@ -850,7 +850,7 @@
 <h3 id="引用说明"><a href="#引用说明" class="headerlink" title="引用说明"></a>引用说明</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">citation(<span class="string">"astsa"</span>)</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">## </div><div class="line">## To cite package &apos;astsa&apos; in publications use:</div><div class="line">## </div><div class="line">##   David Stoffer (2016). astsa: Applied Statistical Time Series</div><div class="line">##   Analysis. R package version 1.6.</div><div class="line">##   https://CRAN.R-project.org/package=astsa</div><div class="line">## </div><div class="line">## A BibTeX entry for LaTeX users is</div><div class="line">## </div><div class="line">##   @Manual&#123;,</div><div class="line">##     title = &#123;astsa: Applied Statistical Time Series Analysis&#125;,</div><div class="line">##     author = &#123;David Stoffer&#125;,</div><div class="line">##     year = &#123;2016&#125;,</div><div class="line">##     note = &#123;R package version 1.6&#125;,</div><div class="line">##     url = &#123;https://CRAN.R-project.org/package=astsa&#125;,</div><div class="line">##   &#125;</div><div class="line">## </div><div class="line">## ATTENTION: This citation information has been auto-generated from</div><div class="line">## the package DESCRIPTION file and may need manual editing, see</div><div class="line">## &apos;help(&quot;citation&quot;)&apos;.</div></pre></td></tr></table></figure>
 <hr>
-<p>阿广Max，数据分析与应用爱好者，<a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#x3a;&#x78;&#105;&#x6e;&#103;&#x75;&#x61;&#110;&#103;&#95;&#108;&#x69;&#x75;&#x40;&#49;&#x36;&#x33;&#x2e;&#99;&#x6f;&#109;">&#x78;&#105;&#x6e;&#103;&#x75;&#x61;&#110;&#103;&#95;&#108;&#x69;&#x75;&#x40;&#49;&#x36;&#x33;&#x2e;&#99;&#x6f;&#109;</a></p>
+<p>阿广Max，数据分析与应用爱好者，<a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#120;&#x69;&#110;&#103;&#117;&#97;&#110;&#103;&#x5f;&#x6c;&#x69;&#117;&#64;&#x31;&#54;&#x33;&#x2e;&#x63;&#x6f;&#109;">&#120;&#x69;&#110;&#103;&#117;&#97;&#110;&#103;&#x5f;&#x6c;&#x69;&#117;&#64;&#x31;&#54;&#x33;&#x2e;&#x63;&#x6f;&#109;</a></p>
 ]]></content>
     
     <summary type="html">
