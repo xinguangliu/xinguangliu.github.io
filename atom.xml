@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-10T16:23:36.969Z</updated>
+  <updated>2017-02-11T11:15:07.837Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/02/10/learning-curve-for-training-data-size/"/>
     <id>http://yoursite.com/2017/02/10/learning-curve-for-training-data-size/</id>
     <published>2017-02-10T15:59:55.948Z</published>
-    <updated>2017-02-10T16:23:36.969Z</updated>
+    <updated>2017-02-11T11:15:07.837Z</updated>
     
     <content type="html"><![CDATA[<h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>过年期间重温了<em>Andrew Ng</em>的课，期间一个小节中提到了学习曲线对于模型优化的帮助作用，不由得想起日常讨论中经常听到<strong>模拟拟合的不够好，是因为用于训练的数据集不够大，所以需要寻找更多的数据用于优化模拟拟合</strong>类似的话，可模拟拟合的优劣与数据集大小之间真的是正比关系吗？看看模型拟合误差的学习曲线怎么说。</p>
 <a id="more"></a>
@@ -28,11 +28,11 @@
 <p><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-1-1.png" width="70%" style="display: block; margin: auto;"></p>
 <h2 id="模型比较"><a href="#模型比较" class="headerlink" title="模型比较"></a>模型比较</h2><p>看三个模型对应的cost随训练样本数增加的学习曲线来分析样本量对模型拟合的作用。</p>
 <h3 id="模型1：线性模型"><a href="#模型1：线性模型" class="headerlink" title="模型1：线性模型"></a>模型1：线性模型</h3><pre><code>model &lt;- lm(y ~ x, data = training)
-</code></pre><p><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;"><img src="learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-2-2.png" width="70%" style="display: block; margin: auto;"></p>
+</code></pre><p><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;"><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-2-2.png" width="70%" style="display: block; margin: auto;"></p>
 <h3 id="模型2：高阶多项式拟合"><a href="#模型2：高阶多项式拟合" class="headerlink" title="模型2：高阶多项式拟合"></a>模型2：高阶多项式拟合</h3><pre><code>model &lt;- lm(y ~ poly(x, 10), data = training)
-</code></pre><p><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;"><img src="learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-3-2.png" width="70%" style="display: block; margin: auto;"></p>
+</code></pre><p><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;"><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-3-2.png" width="70%" style="display: block; margin: auto;"></p>
 <h3 id="模型3：适当的多项式拟合"><a href="#模型3：适当的多项式拟合" class="headerlink" title="模型3：适当的多项式拟合"></a>模型3：适当的多项式拟合</h3><pre><code>model &lt;- lm(y ~ poly(x, 2), data = training)
-</code></pre><p><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;"><img src="learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-4-2.png" width="70%" style="display: block; margin: auto;"></p>
+</code></pre><p><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;"><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-4-2.png" width="70%" style="display: block; margin: auto;"></p>
 <h3 id="模型分析"><a href="#模型分析" class="headerlink" title="模型分析"></a>模型分析</h3><p>上面三个模型的拟合<code>cost function</code>结果为：</p>
 <table>
 <thead>
@@ -743,9 +743,9 @@
       <category term="R" scheme="http://yoursite.com/categories/conference/R/"/>
     
     
-      <category term="reliability" scheme="http://yoursite.com/tags/reliability/"/>
-    
       <category term="R" scheme="http://yoursite.com/tags/R/"/>
+    
+      <category term="reliability" scheme="http://yoursite.com/tags/reliability/"/>
     
   </entry>
   
@@ -850,7 +850,7 @@
 <h3 id="引用说明"><a href="#引用说明" class="headerlink" title="引用说明"></a>引用说明</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">citation(<span class="string">"astsa"</span>)</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">## </div><div class="line">## To cite package &apos;astsa&apos; in publications use:</div><div class="line">## </div><div class="line">##   David Stoffer (2016). astsa: Applied Statistical Time Series</div><div class="line">##   Analysis. R package version 1.6.</div><div class="line">##   https://CRAN.R-project.org/package=astsa</div><div class="line">## </div><div class="line">## A BibTeX entry for LaTeX users is</div><div class="line">## </div><div class="line">##   @Manual&#123;,</div><div class="line">##     title = &#123;astsa: Applied Statistical Time Series Analysis&#125;,</div><div class="line">##     author = &#123;David Stoffer&#125;,</div><div class="line">##     year = &#123;2016&#125;,</div><div class="line">##     note = &#123;R package version 1.6&#125;,</div><div class="line">##     url = &#123;https://CRAN.R-project.org/package=astsa&#125;,</div><div class="line">##   &#125;</div><div class="line">## </div><div class="line">## ATTENTION: This citation information has been auto-generated from</div><div class="line">## the package DESCRIPTION file and may need manual editing, see</div><div class="line">## &apos;help(&quot;citation&quot;)&apos;.</div></pre></td></tr></table></figure>
 <hr>
-<p>阿广Max，数据分析与应用爱好者，<a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x78;&#x69;&#x6e;&#x67;&#117;&#x61;&#x6e;&#x67;&#x5f;&#108;&#x69;&#x75;&#64;&#x31;&#x36;&#51;&#x2e;&#99;&#x6f;&#x6d;">&#x78;&#x69;&#x6e;&#x67;&#117;&#x61;&#x6e;&#x67;&#x5f;&#108;&#x69;&#x75;&#64;&#x31;&#x36;&#51;&#x2e;&#99;&#x6f;&#x6d;</a></p>
+<p>阿广Max，数据分析与应用爱好者，<a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#x3a;&#x78;&#105;&#x6e;&#103;&#x75;&#x61;&#110;&#103;&#95;&#108;&#x69;&#x75;&#x40;&#49;&#x36;&#x33;&#x2e;&#99;&#x6f;&#109;">&#x78;&#105;&#x6e;&#103;&#x75;&#x61;&#110;&#103;&#95;&#108;&#x69;&#x75;&#x40;&#49;&#x36;&#x33;&#x2e;&#99;&#x6f;&#109;</a></p>
 ]]></content>
     
     <summary type="html">

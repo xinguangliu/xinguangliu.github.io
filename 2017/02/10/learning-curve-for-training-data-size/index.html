@@ -94,12 +94,12 @@
 <meta property="og:description" content="序言过年期间重温了Andrew Ng的课，期间一个小节中提到了学习曲线对于模型优化的帮助作用，不由得想起日常讨论中经常听到模拟拟合的不够好，是因为用于训练的数据集不够大，所以需要寻找更多的数据用于优化模拟拟合类似的话，可模拟拟合的优劣与数据集大小之间真的是正比关系吗？看看模型拟合误差的学习曲线怎么说。">
 <meta property="og:image" content="http://yoursite.com/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-1-1.png">
 <meta property="og:image" content="http://yoursite.com/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-2-1.png">
-<meta property="og:image" content="http://yoursite.com/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-2-2.png">
+<meta property="og:image" content="http://yoursite.com/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-2-2.png">
 <meta property="og:image" content="http://yoursite.com/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-3-1.png">
-<meta property="og:image" content="http://yoursite.com/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-3-2.png">
+<meta property="og:image" content="http://yoursite.com/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-3-2.png">
 <meta property="og:image" content="http://yoursite.com/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-4-1.png">
-<meta property="og:image" content="http://yoursite.com/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-4-2.png">
-<meta property="og:updated_time" content="2017-02-10T16:23:36.969Z">
+<meta property="og:image" content="http://yoursite.com/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-4-2.png">
+<meta property="og:updated_time" content="2017-02-11T11:15:07.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从学习曲线看样本量对模型拟合改善作用">
 <meta name="twitter:description" content="序言过年期间重温了Andrew Ng的课，期间一个小节中提到了学习曲线对于模型优化的帮助作用，不由得想起日常讨论中经常听到模拟拟合的不够好，是因为用于训练的数据集不够大，所以需要寻找更多的数据用于优化模拟拟合类似的话，可模拟拟合的优劣与数据集大小之间真的是正比关系吗？看看模型拟合误差的学习曲线怎么说。">
@@ -340,7 +340,7 @@
               
                 <span class="post-meta-item-text">Post modified</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2017-02-11T00:23:36+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2017-02-11T19:15:07+08:00">
                 2017-02-11
               </time>
             
@@ -448,11 +448,11 @@
 <p><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-1-1.png" width="70%" style="display: block; margin: auto;"></p>
 <h2 id="模型比较"><a href="#模型比较" class="headerlink" title="模型比较"></a>模型比较</h2><p>看三个模型对应的cost随训练样本数增加的学习曲线来分析样本量对模型拟合的作用。</p>
 <h3 id="模型1：线性模型"><a href="#模型1：线性模型" class="headerlink" title="模型1：线性模型"></a>模型1：线性模型</h3><pre><code>model &lt;- lm(y ~ x, data = training)
-</code></pre><p><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;"><img src="learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-2-2.png" width="70%" style="display: block; margin: auto;"></p>
+</code></pre><p><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;"><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-2-2.png" width="70%" style="display: block; margin: auto;"></p>
 <h3 id="模型2：高阶多项式拟合"><a href="#模型2：高阶多项式拟合" class="headerlink" title="模型2：高阶多项式拟合"></a>模型2：高阶多项式拟合</h3><pre><code>model &lt;- lm(y ~ poly(x, 10), data = training)
-</code></pre><p><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;"><img src="learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-3-2.png" width="70%" style="display: block; margin: auto;"></p>
+</code></pre><p><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;"><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-3-2.png" width="70%" style="display: block; margin: auto;"></p>
 <h3 id="模型3：适当的多项式拟合"><a href="#模型3：适当的多项式拟合" class="headerlink" title="模型3：适当的多项式拟合"></a>模型3：适当的多项式拟合</h3><pre><code>model &lt;- lm(y ~ poly(x, 2), data = training)
-</code></pre><p><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;"><img src="learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-4-2.png" width="70%" style="display: block; margin: auto;"></p>
+</code></pre><p><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;"><img src="/figure/learning-curve-for-training-data-size_files/figure-html/unnamed-chunk-4-2.png" width="70%" style="display: block; margin: auto;"></p>
 <h3 id="模型分析"><a href="#模型分析" class="headerlink" title="模型分析"></a>模型分析</h3><p>上面三个模型的拟合<code>cost function</code>结果为：</p>
 <table>
 <thead>
