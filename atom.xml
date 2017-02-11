@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-11T11:15:07.837Z</updated>
+  <updated>2017-02-11T13:33:35.776Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>曲线族剖面的过程控制</title>
+    <link href="http://yoursite.com/2017/02/11/non-linear-process-control/"/>
+    <id>http://yoursite.com/2017/02/11/non-linear-process-control/</id>
+    <published>2017-02-11T13:30:05.498Z</published>
+    <updated>2017-02-11T13:33:35.776Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="标题来源"><a href="#标题来源" class="headerlink" title="标题来源"></a>标题来源</h2><p>前几天一位化工业界的朋友讨论到如何对一组曲线做过程控制，某些工艺过程中在一个周期内采集/监测的信号是一些随时间非线性变化的值，简单来说就是一条非线性曲线。之前常说的过程控制SPC图都是基于线性模型的，通过组内组间的均值和方差，来演绎过程的稳定性。非线性的稳定性判定则需要基于自身的非线性关系，分析一组曲线的分布，类似与模型中的预测置信区间概念。</p>
+<a id="more"></a>
+<h2 id="样例数据"><a href="#样例数据" class="headerlink" title="样例数据"></a>样例数据</h2><h3 id="单一曲线"><a href="#单一曲线" class="headerlink" title="单一曲线"></a>单一曲线</h3><p>某一个周期内采集到的信号：</p>
+<p><img src="/figure/non-linear-process-control_files/figure-html/unnamed-chunk-1-1.png" width="70%" style="display: block; margin: auto;"></p>
+<p>对曲线做光滑拟合</p>
+<p><img src="/figure/non-linear-process-control_files/figure-html/unnamed-chunk-2-1.png" width="70%" style="display: block; margin: auto;"></p>
+<h3 id="曲线族"><a href="#曲线族" class="headerlink" title="曲线族"></a>曲线族</h3><p>某段时间间隔内采集到的所有信号：</p>
+<p><img src="/figure/non-linear-process-control_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;"></p>
+<h3 id="过程稳定分析"><a href="#过程稳定分析" class="headerlink" title="过程稳定分析"></a>过程稳定分析</h3><p>跟常规SPC一样，过程数据分为两个步骤：</p>
+<ul>
+<li>Phase 1, 分析阶段，在一个既定时间段内分析过程稳定时的数据分布、分布特征参数和稳定性阈值；</li>
+<li>Phase 2, 控制阶段，基于第一阶段的数据分布和阈值，对后续新的数据点进行监测控制。</li>
+</ul>
+<h4 id="Phase-1"><a href="#Phase-1" class="headerlink" title="Phase 1"></a>Phase 1</h4><p>以过程前期的35个信号为基础，分析过程数据分布特征：</p>
+<p><img src="/figure/non-linear-process-control_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;"></p>
+<p>如果在<code>Phase 1</code>中有异常值，则分析导致异常的因素（特殊原因）并修正，之后剔除该点数据，重新计算分布参数和控制阈值，目的是找出过程稳定时应该具备的特征，如果后续过程无变动，则该分布特征应该得到延续，这是假设检验的原命题<code>H0</code>。</p>
+<h4 id="Phase-2"><a href="#Phase-2" class="headerlink" title="Phase 2"></a>Phase 2</h4><p>基于已得出的阈值对后续新数据点进行控制：</p>
+<p><img src="/figure/non-linear-process-control_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;"></p>
+<p>异常点标号：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#&gt; [1] &quot;P46&quot; &quot;P47&quot; &quot;P48&quot;</div></pre></td></tr></table></figure>
+<p>异常点信号：</p>
+<p><img src="/figure/non-linear-process-control_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;"></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>关于非线性数据剖面的过程控制已有很多论文，在标准文件<a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=42000" target="_blank" rel="external">ISO 11843-5:2008</a>也有讨论，方法也不止一个，具体应用需要根据业务场景来进行选择和调配。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;标题来源&quot;&gt;&lt;a href=&quot;#标题来源&quot; class=&quot;headerlink&quot; title=&quot;标题来源&quot;&gt;&lt;/a&gt;标题来源&lt;/h2&gt;&lt;p&gt;前几天一位化工业界的朋友讨论到如何对一组曲线做过程控制，某些工艺过程中在一个周期内采集/监测的信号是一些随时间非线性变化的值，简单来说就是一条非线性曲线。之前常说的过程控制SPC图都是基于线性模型的，通过组内组间的均值和方差，来演绎过程的稳定性。非线性的稳定性判定则需要基于自身的非线性关系，分析一组曲线的分布，类似与模型中的预测置信区间概念。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="modeling" scheme="http://yoursite.com/categories/modeling/"/>
+    
+      <category term="SPC" scheme="http://yoursite.com/categories/modeling/SPC/"/>
+    
+      <category term="quality control" scheme="http://yoursite.com/categories/modeling/SPC/quality-control/"/>
+    
+    
+      <category term="modeling" scheme="http://yoursite.com/tags/modeling/"/>
+    
+      <category term="SPC" scheme="http://yoursite.com/tags/SPC/"/>
+    
+      <category term="quality control" scheme="http://yoursite.com/tags/quality-control/"/>
+    
+  </entry>
   
   <entry>
     <title>从学习曲线看样本量对模型拟合改善作用</title>
@@ -850,7 +903,7 @@
 <h3 id="引用说明"><a href="#引用说明" class="headerlink" title="引用说明"></a>引用说明</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">citation(<span class="string">"astsa"</span>)</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">## </div><div class="line">## To cite package &apos;astsa&apos; in publications use:</div><div class="line">## </div><div class="line">##   David Stoffer (2016). astsa: Applied Statistical Time Series</div><div class="line">##   Analysis. R package version 1.6.</div><div class="line">##   https://CRAN.R-project.org/package=astsa</div><div class="line">## </div><div class="line">## A BibTeX entry for LaTeX users is</div><div class="line">## </div><div class="line">##   @Manual&#123;,</div><div class="line">##     title = &#123;astsa: Applied Statistical Time Series Analysis&#125;,</div><div class="line">##     author = &#123;David Stoffer&#125;,</div><div class="line">##     year = &#123;2016&#125;,</div><div class="line">##     note = &#123;R package version 1.6&#125;,</div><div class="line">##     url = &#123;https://CRAN.R-project.org/package=astsa&#125;,</div><div class="line">##   &#125;</div><div class="line">## </div><div class="line">## ATTENTION: This citation information has been auto-generated from</div><div class="line">## the package DESCRIPTION file and may need manual editing, see</div><div class="line">## &apos;help(&quot;citation&quot;)&apos;.</div></pre></td></tr></table></figure>
 <hr>
-<p>阿广Max，数据分析与应用爱好者，<a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#120;&#x69;&#110;&#103;&#117;&#97;&#110;&#103;&#x5f;&#x6c;&#x69;&#117;&#64;&#x31;&#54;&#x33;&#x2e;&#x63;&#x6f;&#109;">&#120;&#x69;&#110;&#103;&#117;&#97;&#110;&#103;&#x5f;&#x6c;&#x69;&#117;&#64;&#x31;&#54;&#x33;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p>阿广Max，数据分析与应用爱好者，<a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#120;&#105;&#x6e;&#103;&#117;&#97;&#110;&#103;&#95;&#108;&#105;&#117;&#64;&#49;&#54;&#51;&#x2e;&#99;&#x6f;&#x6d;">&#120;&#105;&#x6e;&#103;&#117;&#97;&#110;&#103;&#95;&#108;&#105;&#117;&#64;&#49;&#54;&#51;&#x2e;&#99;&#x6f;&#x6d;</a></p>
 ]]></content>
     
     <summary type="html">
