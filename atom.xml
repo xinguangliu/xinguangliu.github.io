@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-11T13:33:35.776Z</updated>
+  <updated>2017-03-07T09:28:50.281Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,99 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在Ubuntu16.04安装配置MySQL</title>
+    <link href="http://yoursite.com/2017/03/07/install-mysql-on-ubuntu/"/>
+    <id>http://yoursite.com/2017/03/07/install-mysql-on-ubuntu/</id>
+    <published>2017-03-07T09:15:40.021Z</published>
+    <updated>2017-03-07T09:28:50.281Z</updated>
+    
+    <content type="html"><![CDATA[<p>工作记录：在Ubuntu16.04安装配置MySQL</p>
+<a id="more"></a>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>在线安装</p>
+<p><code>sudo apt-get install mysql-server</code></p>
+<p>安装后的目录地址: <code>/etc/mysql/</code></p>
+<ul>
+<li>检查MySQL服务器系统进程:<br>  <code>ps -aux|grep mysql</code></li>
+<li>检查MySQL服务器占用端口<br>  <code>netstat -nlt|grep 3306</code></li>
+<li>通过启动命令检查MySQL服务器状态<br>  <code>sudo /etc/init.d/mysql status</code></li>
+<li>通过系统服务命令检查MySQL服务器状态<br>  <code>service mysql status</code></li>
+</ul>
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>连接MySQL格式：</p>
+<p><code>mysql -h 主机地址 -u用户名 -p用户密码</code></p>
+<p>连接本机数据库：</p>
+<p><code>mysql -uroot -p</code></p>
+<p>重置<code>root</code>账户密码：</p>
+<p><code>GRANT ALL PRIVILEGES ON *.* TO root@localhost IDENTIFIED BY &quot;myPassWord&quot;</code></p>
+<p>退出：<code>exit;</code></p>
+<h3 id="远程登录"><a href="#远程登录" class="headerlink" title="远程登录"></a>远程登录</h3><p>在Ubuntu下MySQL缺省是只允许本地访问的，远程登录需要设置两个地方：</p>
+<ol>
+<li><p>命令授权<br> <code>GRANT ALL PRIVILEGES ON *.* TO &lt;user&gt;@&quot;%&quot; IDENTIFIED BY &#39;&lt;password&gt;&#39; WITH GRANT OPTION;</code><br> <code>FLUSH PRIVILEGES;</code></p>
+</li>
+<li><p>修改配置文件<br> <code>sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</code><br> //找到如下内容，并注释<br> <code>bind-address = 127.0.0.1</code></p>
+</li>
+</ol>
+<p>之后重启MySQL服务：<code>sudo service mysql restart</code></p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
+<li><p>查看mysql数据库的版本号<br>  <code>mysql -V</code></p>
+</li>
+<li><p>显示所有数据库<br>  <code>show databases;</code></p>
+</li>
+<li>连接数据库<br>  <code>use test;</code></li>
+<li>查看当前使用的数据库<br>  <code>select database();</code></li>
+<li>当前数据库包含的表信息<br>  <code>show tables;</code></li>
+<li>删除数据库<br>  <code>drop database test;</code></li>
+<li>创建数据库<br>  <code>create database test;</code></li>
+<li>连接数据库<br>  <code>use test;</code></li>
+<li>在数据库<code>test</code>中，新建一张表<code>table1</code><br>  <code>create table table1(id int primary key,name varchar(32) not null);</code></li>
+<li>新建book用户，密码为bookpwd，允许book可以远程访问abc数据库，授权book对abc进行所有数据库<br>  <code>GRANT ALL ON abc.* to book@&#39;%&#39; IDENTIFIED BY &#39;bookpwd&#39;;</code></li>
+<li>允许book可以本地访问abc数据库，授权book对abc进行所有数据库<br>  <code>GRANT ALL ON abc.* to book@localhost IDENTIFIED BY &#39;bookpwd&#39;;</code></li>
+<li><p>删除权限:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1) revoke all privileges on test1.* from test1@&quot;%&quot;;</div><div class="line">　　2) use mysql;</div><div class="line">　　3) delete from user where user=&quot;root&quot; and host=&quot;%&quot;;</div><div class="line">　　4) flush privileges;</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动mysql服务<br>  <code>sudo service mysql start</code></p>
+</li>
+<li>停止mysql服务<br>  <code>sudo service mysql stop</code></li>
+<li><p>重启mysql服务<br>  <code>sudo service mysql restart</code></p>
+</li>
+<li><p>启动mysqld服务<br>  <code>sudo /etc/init.d/mysql start</code></p>
+</li>
+<li>停止mysqld服务<br>  <code>sudo /etc/init.d/mysql stop</code></li>
+<li>重启mysqld服务</li>
+</ul>
+<h3 id="设置字符集"><a href="#设置字符集" class="headerlink" title="设置字符集"></a>设置字符集</h3><ul>
+<li>创建数据库时指定字符集：<code>create database mydb character set utf-8;</code></li>
+<li>查看当前字符集：<code>show variables like &#39;%char%&#39;;</code></li>
+<li>修改当前数据库的字符集:<br>  <code>sudo gedit /etc/mysql/my.cnf</code><br>  添加:  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[client]  </div><div class="line">default-character-set=utf8  </div><div class="line">[mysqld]  </div><div class="line">character-set-server=utf8  </div><div class="line">collation-server=utf8_general_ci</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="改变数据存储位置"><a href="#改变数据存储位置" class="headerlink" title="改变数据存储位置"></a>改变数据存储位置</h3><p>默认存储位置在 <code>sudo gedit /etc/mysql/mysql.conf.d/mysqld.cnf</code> 中的 <code>datadir= /var/lib/mysql</code>, 通过Linux系统的软连(ln -s)接来做。当我们新挂载一块硬盘，停止MySQL服务，然后把/var/lib/mysql目录移动到新的硬盘存储，在/var/lib/mysql处建立指定新位置的软连接就行了。</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"># 停止MySQL服务器</div><div class="line">~ /etc/init.d/mysql stop</div><div class="line"># 挂载硬盘</div><div class="line">~ mount -t ext4 /dev/vdb1 /vdb1</div><div class="line"># 建立新存储目录</div><div class="line">~ mkdir /vdb1/data</div><div class="line"># 移动MySQL数据目录到新目录</div><div class="line">~ mv /var/lib/mysql /vdb1/data/</div><div class="line"># 软连接</div><div class="line">~ ln -s /vdb1/data/mysql /var/lib/mysql</div><div class="line"># 修改apparmor的别名定义文件</div><div class="line">~ vi /etc/apparmor.d/tunables/alias</div><div class="line">alias /var/lib/mysql/ -&gt; /vdb1/data/mysql/,</div><div class="line"># 重启apparmor服务</div><div class="line">~ /etc/init.d/apparmor restart</div><div class="line"># 重启MySQL服务器</div><div class="line">~ /etc/init.d/mysql start</div></pre></td></tr></table></figure>
+</code></pre><h3 id="MySQL的ODBC驱动下载"><a href="#MySQL的ODBC驱动下载" class="headerlink" title="MySQL的ODBC驱动下载"></a>MySQL的ODBC驱动下载</h3><p>在别的电脑上连接数据库时，需要驱动程序：</p>
+<p><a href="https://dev.mysql.com/downloads/connector/odbc/" target="_blank" rel="external">https://dev.mysql.com/downloads/connector/odbc/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;工作记录：在Ubuntu16.04安装配置MySQL&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://yoursite.com/categories/MySQL/"/>
+    
+      <category term="UBUNTU 16.04" scheme="http://yoursite.com/categories/MySQL/UBUNTU-16-04/"/>
+    
+    
+      <category term="Win7" scheme="http://yoursite.com/tags/Win7/"/>
+    
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+      <category term="Ubuntu 16.04" scheme="http://yoursite.com/tags/Ubuntu-16-04/"/>
+    
+      <category term="远程连接" scheme="http://yoursite.com/tags/%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>曲线族剖面的过程控制</title>
@@ -903,7 +996,7 @@
 <h3 id="引用说明"><a href="#引用说明" class="headerlink" title="引用说明"></a>引用说明</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">citation(<span class="string">"astsa"</span>)</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">## </div><div class="line">## To cite package &apos;astsa&apos; in publications use:</div><div class="line">## </div><div class="line">##   David Stoffer (2016). astsa: Applied Statistical Time Series</div><div class="line">##   Analysis. R package version 1.6.</div><div class="line">##   https://CRAN.R-project.org/package=astsa</div><div class="line">## </div><div class="line">## A BibTeX entry for LaTeX users is</div><div class="line">## </div><div class="line">##   @Manual&#123;,</div><div class="line">##     title = &#123;astsa: Applied Statistical Time Series Analysis&#125;,</div><div class="line">##     author = &#123;David Stoffer&#125;,</div><div class="line">##     year = &#123;2016&#125;,</div><div class="line">##     note = &#123;R package version 1.6&#125;,</div><div class="line">##     url = &#123;https://CRAN.R-project.org/package=astsa&#125;,</div><div class="line">##   &#125;</div><div class="line">## </div><div class="line">## ATTENTION: This citation information has been auto-generated from</div><div class="line">## the package DESCRIPTION file and may need manual editing, see</div><div class="line">## &apos;help(&quot;citation&quot;)&apos;.</div></pre></td></tr></table></figure>
 <hr>
-<p>阿广Max，数据分析与应用爱好者，<a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#x6f;&#58;&#120;&#105;&#x6e;&#103;&#117;&#97;&#110;&#103;&#95;&#108;&#105;&#117;&#64;&#49;&#54;&#51;&#x2e;&#99;&#x6f;&#x6d;">&#120;&#105;&#x6e;&#103;&#117;&#97;&#110;&#103;&#95;&#108;&#105;&#117;&#64;&#49;&#54;&#51;&#x2e;&#99;&#x6f;&#x6d;</a></p>
+<p>阿广Max，数据分析与应用爱好者，<a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#120;&#x69;&#x6e;&#x67;&#x75;&#97;&#x6e;&#103;&#95;&#x6c;&#x69;&#x75;&#x40;&#49;&#54;&#51;&#x2e;&#x63;&#111;&#109;">&#120;&#x69;&#x6e;&#x67;&#x75;&#97;&#x6e;&#103;&#95;&#x6c;&#x69;&#x75;&#x40;&#49;&#54;&#51;&#x2e;&#x63;&#111;&#109;</a></p>
 ]]></content>
     
     <summary type="html">
